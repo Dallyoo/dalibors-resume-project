@@ -1,0 +1,60 @@
+//
+// Dark mode bootstrap overrides
+//
+$prefix: "bs-";
+
+@mixin dropdown-dark($prefix) {
+    .dropdown-menu {
+      --#{$prefix}dropdown-color: #{$dropdown-dark-color};
+      --#{$prefix}dropdown-bg: #{$dropdown-dark-bg};
+      --#{$prefix}dropdown-border-color: #{$dropdown-dark-border-color};
+      --#{$prefix}dropdown-box-shadow: #{$dropdown-dark-box-shadow};
+      --#{$prefix}dropdown-link-color: #{$dropdown-dark-link-color};
+      --#{$prefix}dropdown-link-hover-color: #{$dropdown-dark-link-hover-color};
+      --#{$prefix}dropdown-divider-bg: #{$dropdown-dark-divider-bg};
+      --#{$prefix}dropdown-link-hover-bg: #{$dropdown-dark-link-hover-bg};
+      --#{$prefix}dropdown-link-active-color: #{$dropdown-dark-link-active-color};
+      --#{$prefix}dropdown-link-active-bg: #{$dropdown-dark-link-active-bg};
+      --#{$prefix}dropdown-link-disabled-color: #{$dropdown-dark-link-disabled-color};
+      --#{$prefix}dropdown-header-color: #{$dropdown-dark-header-color};
+    }
+
+    body{
+      --#{$prefix}body-color: #{$gray-400};
+      --#{$prefix}body-bg: #{$dark};
+    }
+
+    .modal-content{
+      --#{$prefix}modal-bg: #{$dropdown-dark-bg};
+    }
+
+    .modal{
+      --#{$prefix}modal-color: #{$gray-400};
+      --#{$prefix}border-color: #{$gray-600};
+    }
+}
+
+html {
+    --body-bg: var(--bs-body-bg);
+    --body-color: #{$gray-800};
+    --heading-color: #{$gray-heading};
+    --switcher-color: var(--bs-body-bg);
+    --switcher-ball-color: var(--bs-dark);
+    --display-mode-inline-light: inline-block;
+    --display-mode-inline-dark: none;
+}
+
+html[data-bs-color-scheme='dark'] {
+    --body-bg: var(--bs-dark);
+    --body-color: #{$gray-400};
+    --heading-color: #{$gray-400};
+    --switcher-color: var(--bs-dark);
+    --switcher-ball-color: var(--bs-body-bg);
+    --display-mode-inline-light: none;
+    --display-mode-inline-dark: inline-block;
+
+    @include dropdown-dark($prefix);
+}
+
+
+    

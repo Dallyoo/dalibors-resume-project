@@ -1,0 +1,191 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject IStringLocalizer<ResumePageResources> Localizer
+@inject IStringLocalizer<SharedResources> SharedLocalizer
+
+<div class="resume-page" id="resumePage">
+	<div class="container-fluid p-0" id="resume">
+		<!-- About-->
+		<section class="resume-section about-section" id="about">
+			<div class="resume-section-content">
+				<span class="d-block d-lg-none">
+					<img class="img-fluid img-profile-lg rounded-circle mx-auto mb-2" src="~/assets/img/profile.png" alt="..." />
+				</span>
+				<h1 class="mb-0">
+					@SharedLocalizer["Name"]
+					<span class="text-primary">@SharedLocalizer["Surname"]</span>
+				</h1>
+				<div class="subheading mb-5 ">
+					<a href="mailto:hon.dalibor@gmail.com">hon.dalibor@gmail.com</a>
+					<br />
+					+420 732 932 559
+				</div>
+				<p class="lead mb-5">@Localizer["About_Introduction"]</p>
+			</div>
+		</section>
+		<hr class="m-0" />
+
+		<!-- Experience-->
+		<section class="resume-section" id="experience">
+			<div class="resume-section-content hideme">
+				<h2 class="mb-5">@SharedLocalizer["Nav_Experience"]</h2>
+				<div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+					<div class="flex-grow-1">
+						<h3 class="mb-0">ECM Business Consultant</h3>
+						<div class="subheading mb-3">Konica Minolta IT Solutions Czech s.r.o</div>
+						<p>@Localizer["ECMBusinessConsultantText"]</p>
+					</div>
+					<div class="flex-shrink-0"><span class="text-primary">@Localizer["ECMBusinessConsultantDate"]</span></div>
+				</div>
+				<div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+					<div class="flex-grow-1">
+						<h3 class="mb-0">Analyst, Shared Services</h3>
+						<div class="subheading mb-3">MONETA Money Bank a.s.</div>
+						<p>@Localizer["MonetaAnalystText"]</p>
+					</div>
+					<div class="flex-shrink-0"><span class="text-primary">@Localizer["MonetaAnalystDate"]</span></div>
+				</div>
+				<div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+					<div class="flex-grow-1">
+						<h3 class="mb-0">Administrator End User Services, IT</h3>
+						<div class="subheading mb-3">MONETA Money Bank a.s.</div>
+						<p>@Localizer["MonetaEndUserServicesText"]</p>
+					</div>
+					<div class="flex-shrink-0"><span class="text-primary">@Localizer["MonetaEndUserServicesDate"]</span></div>
+				</div>
+				<div class="d-flex flex-column flex-md-row justify-content-between">
+					<div class="flex-grow-1">
+						<h3 class="mb-0">Motherboard technician</h3>
+						<div class="subheading mb-3">ASUS Czech Service s.r.o.</div>
+						<p>@Localizer["AsusTechnicianText"]</p>
+					</div>
+					<div class="flex-shrink-0"><span class="text-primary">@Localizer["AsusTechnicianDate"]</span></div>
+				</div>
+			</div>
+		</section>
+		<hr class="m-0" />
+
+		<!-- Education-->
+		<section class="resume-section" id="education">
+			<div class="resume-section-content hideme">
+				<h2 class="mb-5">@SharedLocalizer["Nav_Education"]</h2>
+				<div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+					<div class="flex-grow-1">
+						<h3 class="mb-0">@Localizer["HighSchoolNaJizdarne"]</h3>
+						<div class="subheading mb-3">@Localizer["MaturityDiploma"]</div>
+						<div>@Localizer["HighSchoolNaJizdarneText"]</div>
+					</div>
+					<div class="flex-shrink-0"><span class="text-primary">2010 - 2014</span></div>
+				</div>
+			</div>
+		</section>
+		<hr class="m-0" />
+
+		<!-- Skills-->
+		<section class="resume-section" id="skills">
+			<div class="resume-section-content hideme">
+				<h2 class="mb-5">@SharedLocalizer["Nav_Skills"]</h2>
+				<p class="lead mb-5">@Localizer["Skills_Introduction"]</p>
+				<div class="subheading mb-3">@Localizer["Skills_ProgrammingLangAndTools"]</div>
+				<ul class="list-inline dev-icons">
+					<li class="list-inline-item"><i class="fab fa-html5"></i></li>
+					<li class="list-inline-item"><i class="fab fa-css3-alt"></i></li>
+					<li class="list-inline-item"><i class="fab fa-js-square"></i></li>
+					<li class="list-inline-item"><i class="fab fa-node-js"></i></li>
+					<li class="list-inline-item"><i class="fab fa-sass"></i></li>
+					<li class="list-inline-item"><i class="fab fa-npm"></i></li>
+					<li class="list-inline-item"><i class="devicon-webpack-plain"></i></li>
+					<li class="list-inline-item"><i class="devicon-csharp-line"></i></li>
+					<li class="list-inline-item"><i class="devicon-dot-net-plain-wordmark"></i></li>
+					<li class="list-inline-item"><i class="devicon-dotnetcore-plain"></i></li>
+					<li class="list-inline-item"><i class="devicon-bootstrap-plain"></i></li>
+					<li class="list-inline-item"><i class="devicon-microsoftsqlserver-plain-wordmark"></i></li>
+					<li class="list-inline-item"><i class="devicon-git-plain"></i></li>
+					<li class="list-inline-item"><i class="devicon-jquery-plain"></i></li>
+					<li class="list-inline-item"><i class="devicon-photoshop-plain"></i></li>
+					<li class="list-inline-item"><i class="devicon-azure-plain"></i></li>
+				</ul>
+				<div class="subheading mb-3">@Localizer["Skills_SoftwareAndPlatforms"]</div>
+				<ul class="fa-ul mb-3">
+					<li>
+						<span class="fa-li"><i class="fa-solid fa-circle" style="font-size:smaller"></i></span>
+						<a href="https://www.abbyy.com/flexicapture/" target="_blank">ABBYY FlexiCapture</a>
+					</li>
+					<li>
+						<span class="fa-li"><i class="fa-solid fa-circle" style="font-size:smaller"></i></span>
+						<a href="https://www.abbyy.com/finereader-server/" target="_blank">ABBYY FineReader Server</a>
+					</li>
+					<li>
+						<span class="fa-li"><i class="fa-solid fa-circle" style="font-size:smaller"></i></span>
+						<a href="https://www.abbyy.com/vantage/" target="_blank">ABBYY Vantage</a>
+					</li>
+					<li>
+						<span class="fa-li"><i class="fa-solid fa-circle" style="font-size:smaller"></i></span>
+						<a href="https://www.microsoft.com/cs-cz/microsoft-365/sharepoint/collaboration" target="_blank">Microsoft SharePoint</a>
+					</li>
+					<li>
+						<span class="fa-li"><i class="fa-solid fa-circle" style="font-size:smaller"></i></span>
+						<a href="https://powerplatform.microsoft.com/en-us/" target="_blank">Microsoft PowerPlaftorm</a>
+					</li>
+					<li>
+						<span class="fa-li"><i class="fa-solid fa-circle" style="font-size:smaller"></i></span>
+						<a href="https://www.m-files.com/" target="_blank">M-Files</a>
+					</li>
+					<li>
+						<span class="fa-li"><i class="fa-solid fa-circle" style="font-size:smaller"></i></span>
+						<a href="https://www.nintex.com/process-automation/k2-software/" target="_blank">K2 Five/K2 Cloud</a>
+					</li>
+
+				</ul>
+				<p>@Localizer["Skills_SoftwareAndPlatformsText"]</p>
+			</div>
+		</section>
+		<hr class="m-0" />
+
+		<!-- Awards-->
+		<section class="resume-section" id="awards">
+			<div class="resume-section-content hideme">
+				<h2 class="mb-5">@SharedLocalizer["Nav_Certifications"]</h2>
+				<p class="lead mb-5">@Html.Raw(Localizer["Cert_LinkedIn"])</p>
+				<ul class="fa-ul mb-0">
+					<li>
+						<span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+						Microsoft Certified: Power Platform Fundamentals (PL-900)
+					</li>
+					<li>
+						<span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+						ABBYY FlexiCapture 12 Basic
+					</li>
+					<li>
+						<span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+						K2 IT Developer
+					</li>
+					<li>
+						<span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+						K2 Business Analyst
+					</li>
+					<li>
+						<span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+						K2 Citizen Developer
+					</li>
+					<li>
+						<span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+						ABBYY Vantage Business Analyst
+					</li>
+				</ul>
+			</div>
+		</section>
+		<hr class="m-0" />
+
+		<!-- Interests-->
+		<section class="resume-section" id="interests">
+			<div class="resume-section-content hideme">
+				<h2 class="mb-5">@SharedLocalizer["Nav_Interests"]</h2>
+				<p>@Localizer["InterestsText"]</p>
+			</div>
+		</section>	
+	</div>
+	<!-- Footer -->
+	<partial name="~/Pages/Shared/Partial/_Footer.cshtml" />
+</div>
+
+

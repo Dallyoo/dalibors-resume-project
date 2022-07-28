@@ -1,0 +1,43 @@
+//
+// About page sections
+//
+
+
+section.about-page-section {
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    max-width: 75rem;
+
+    .btn{
+        @extend .btn-primary;
+    }
+
+    .about-page-section-content {
+        width: 100%;
+    }
+}
+
+@include media-breakpoint-up(md) {
+    section.about-page-section {
+        min-height: 100vh;
+    }
+}
+
+@include media-breakpoint-down(lg) {
+    section.about-page-section {
+        min-height: 100vh;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    section.about-page-section {
+        padding-left: 3rem;
+        padding-right: 3rem;
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+}

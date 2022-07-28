@@ -1,0 +1,9 @@
+﻿@inject IViewLocalizer Localizer
+<!-- Footer -->
+<footer class="footer text-muted">
+	<hr class="m-0" />
+	<div class="container-fluid p-2 opacity-75">
+		@DateTime.Today.Year - @Localizer["PageCreatedBy"]<br />
+		<a asp-page="AboutPage" target="_self">@Localizer["Link_AboutThisPage"]</a>
+	</div>
+</footer>

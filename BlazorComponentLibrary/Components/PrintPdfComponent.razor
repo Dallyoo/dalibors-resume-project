@@ -1,0 +1,100 @@
+﻿@using System.Web;
+@using iText.Html2pdf.Css.Apply.Impl
+@using iText.Html2pdf.Resolver.Font
+@using iText.Kernel.Pdf
+@using iText.IO;
+@using iText.Layout.Font
+@using iText;
+@using iText.Html2pdf;
+@using Razor.Templating.Core;
+@inject IJSRuntime JS
+@inject NavigationManager NavManager
+@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment HostEnv
+@inject IStringLocalizer<PrintPdfComponent> Localizer
+
+<!-- Modal popup for PDF printing, uses Bootstrap CSS/JS -->
+<div class="modal fade" id="printModal" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="StaticBackdrop" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header" style="@(spin ? "border-bottom: none;" : "")">
+				<h5 class="modal-title h-modal" id="exampleModalLabel">@Localizer["Modal_Title"]</h5>
+				<button type="button" class="btn-close @(spin ? "d-none" : "")" data-bs-dismiss="modal" aria-label="@Localizer["Button_Close"]"></button>
+			</div>
+			<div class="modal-body d-flex align-items-center justify-content-center">
+				<div class="entry-content @(spin ? "d-none" : "")">
+					<p class="p-modal">
+						@Localizer["P_ConfirmDownload"]
+					</p>
+				</div>
+				<div class="d-flex justify-content-center spinner @(spin ? "spinner-border" : "")"/>
+			</div>
+			<div class="modal-footer" style="@(spin ? "border-top: none;" : "")">
+				<button type="button" class="btn btn-secondary @(spin ? "d-none" : "")" data-bs-dismiss="modal">@Localizer["Button_Close"]</button>
+				<button @onclick="CreatePdfFromHtml" type="button" class="btn btn-primary @(spin ? "d-none" : "")">@Localizer["Button_DownloadPDF"]</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+@code {
+
+	[Parameter]
+	public string PageToPrint { get; set; }
+
+	public bool spin = false;
+
+	private async Task CreatePdfFromHtml()
+	{
+		
+		var html = await RazorTemplateEngine.RenderAsync(PageToPrint);
+		spin = true;
+		await Task.Run(() => this.CreatePdf(html));
+		await Task.Run(() =>JS.InvokeVoidAsync("closePrintModal"));
+		await Task.Delay(2000); // Delay so the modal doesn't switch in front of user
+		spin = false;
+		
+
+	}
+
+	private async Task CreatePdf(string html)
+	{
+		byte[] buffer;
+		// Itext
+		iText.Kernel.Pdf.PdfDocument pdfDoc = null;
+		FontProvider fontProvider = new DefaultFontProvider(false, true, false);
+		ConverterProperties props = new ConverterProperties();
+		props.SetBaseUri(NavManager.BaseUri);
+		//props.SetFontProvider(fontProvider);
+
+		using (MemoryStream memStream = new MemoryStream())
+		{
+			using (PdfWriter pdfWriter = new PdfWriter(memStream))
+			{
+				pdfWriter.SetCloseStream(true);
+				using (pdfDoc = new iText.Kernel.Pdf.PdfDocument(pdfWriter))
+				{
+					pdfDoc.SetDefaultPageSize(iText.Kernel.Geom.PageSize.A4);
+					pdfDoc.SetCloseWriter(true);
+					pdfDoc.SetCloseReader(true);
+					pdfDoc.SetFlushUnusedObjects(true);
+					HtmlConverter.ConvertToPdf(html, pdfDoc, props);
+					pdfDoc.Close();
+				}
+			}
+			buffer = memStream.ToArray();
+		}
+
+		// download file
+		MemoryStream memoryStream = new MemoryStream(buffer);
+		await this.DownloadFileFromStream(memoryStream, "ResumeOfDalibor.pdf");
+
+	}
+
+	private async Task DownloadFileFromStream(MemoryStream fileStream, string fileName)
+	{
+
+		using var streamRef = new DotNetStreamReference(stream: fileStream);
+
+		await JS.InvokeVoidAsync("downloadFileFromStream", fileName, streamRef);
+	}
+}

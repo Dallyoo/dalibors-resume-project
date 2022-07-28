@@ -1,0 +1,26 @@
+@using System.Globalization
+@inject IViewLocalizer Localizer
+@inject IStringLocalizer<SharedResources> SharedLocalizer
+@model Resume.Models.CulturePickerModel
+@{
+	var currentCulture = Model.CurrentUICulture.Name;
+}
+
+<div class="@(Model.RenderAsButton ? "" : "nav-item") dropdown-center">
+	<a class="@(Model.RenderAsButton ? "btn" : "nav-link") dropdown-toggle dropdown-center" id="cultureSwitcherMenu" role="button" href="" data-bs-toggle="dropdown" aria-expanded="false">
+		<span tabindex="-1"><i class="fa fa-globe" aria-hidden="true"></i></span>
+		@SharedLocalizer["Nav_Language"]
+	</a>
+	<ul class="dropdown-menu animate slideIn" aria-labelledby="cultureSwitcherMenu">
+		@foreach (var culture in Model.SupportedCultures)
+		{
+			var regionInfo = new RegionInfo(culture.LCID);
+			<li>
+				<a asp-route-culture="@culture.Name" 
+				class="dropdown-item">@culture.NativeName<i class="@(Model.CurrentUICulture.Name == culture.Name ? "fa fa-check" : "") position-absolute" aria-hidden="true"></i>
+				</a>
+			</li>
+		}
+
+	</ul>
+</div>

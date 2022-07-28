@@ -1,0 +1,15 @@
+//
+// Colors and theming
+//
+
+// Override Bootstrap color system
+$orange: #bd5d38;
+$gray-800: #343a40; //#6c757d;
+$bs-gray-800: #6c757d;
+$gray-heading: #343a40;
+
+// Override Bootstrap default state colors
+$primary: $orange;
+$primary-alt: $orange;
+$secondary: $bs-gray-800;
+$secondary-alt: $bs-gray-800;

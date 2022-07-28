@@ -1,0 +1,34 @@
+// 
+// Styles
+//
+
+// Import variables
+@import "./variables.scss";
+
+// Import Bootstrap
+@import "bootstrap";
+//@import "bootstrap-dark-5/scss/bootstrap-blackbox.scss";
+
+// Import darkmode overrides
+@import "./variables/darkmode.scss";
+
+// Import Font Awesome
+@import "@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "@fortawesome/fontawesome-free/scss/solid.scss";
+@import "@fortawesome/fontawesome-free/scss/brands.scss";
+
+// Components
+@import "./components/sidenav.scss";
+@import "./components/icons.scss";
+@import "./components/dropdown.scss";
+@import "./components/dark-mode-switch.scss";
+
+// Sections
+@import "./sections/resume-section.scss";
+@import "./sections/about-page-section.scss";
+
+// Global CSS
+@import "./global.scss";
+
+// Flag icons
+@import "flag-icons";

@@ -1,0 +1,17 @@
+﻿@page
+@model IndexModel
+@inject IStringLocalizer<SharedResources> Localizer
+@{
+	ViewData["Title"] = Localizer["S_Resume"] + " - " + Localizer["NameSurname"];
+	ViewData["Printable"] = "Pages/Partial/_ResumePrint.cshtml"; // Path used in component library
+}
+<!-- Floating icons-->
+<partial name="/Pages/Shared/Partial/_FloatingIcons.cshtml" />
+
+<!-- Navigation -->
+<partial name="/Pages/Shared/Partial/_NavigationIndex.cshtml" />
+
+<!-- Resume -->
+<partial name="/Pages/Partial/_Resume.cshtml" />
+
+

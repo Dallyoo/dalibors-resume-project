@@ -1,0 +1,66 @@
+// 
+// Global
+//
+body {
+    color: var(--body-color);
+}
+
+@include media-breakpoint-up(lg) {
+    .resume-page {
+        padding-top: 0;
+        padding-left: $sidebar-base-width;
+        transition: 0.4s;
+    }
+
+    .resume-shrink {
+        padding-left: $shrink-width;
+    }
+}
+
+.page {
+    opacity: 0;
+    transition: 0.4s;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-transform: uppercase;
+    color: var(--heading-color);
+}
+
+
+h1 {
+    line-height: 1;
+}
+
+p.lead {
+    font-size: 1.15rem;
+    font-weight: 400;
+}
+
+.subheading {
+    font-family: $headings-font-family;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+.spinner {
+    color: $primary;
+}
+
+#pageLoading {
+    display: flex;
+}
+
+.d-light-inline {
+    display: var(--display-mode-inline-light) !important;
+}
+
+.d-dark-inline {
+    display: var(--display-mode-inline-dark) !important;
+}

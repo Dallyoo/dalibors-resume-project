@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About_Introduction" xml:space="preserve">
+    <value>Ahoj! Jsem Dalibor a mou momentální pracovní rolí je Business Konzultant. Snažím se udržovat naše zákazníky spokojené, a naše vývojáře při smyslech.</value>
+  </data>
+  <data name="AsusTechnicianText" xml:space="preserve">
+    <value>Opravování základních desek všeho druhu na úrovni malých součástek. Pájení, měření (osciloskopem), a samozřejmě čtení v elektronických schématech.</value>
+  </data>
+  <data name="ECMBusinessConsultantText" xml:space="preserve">
+    <value>Konzultace ve směru digitalizace kanceláří a zbavení se papírových procesů ve firmách. Digitalizace zahrnuje automatické vytěžování údajů z dokumentů, integrace na interní systémy
+zákazníka a popřípadě také zavádění nových systémů, z pravidla systémů pro správu dokumentů (DMS). Využití agilních metodik, ale také waterfallu.
+Úzká spolupráce se zákazníkem a interními týmy jako např. vývojové oddělení, při vytváření vývojového zadání a také business analýz. 
+Součástí je také školení zákazníku pro práce s novými implementovanými systémy.</value>
+  </data>
+  <data name="H2_Education" xml:space="preserve">
+    <value>Vzdělání</value>
+  </data>
+  <data name="H2_Experience" xml:space="preserve">
+    <value>Zkušenosti</value>
+  </data>
+  <data name="HighSchoolNaJizdarne" xml:space="preserve">
+    <value>Střední škola Elektrotechnická, Ostrava, Na Jízdárně</value>
+  </data>
+  <data name="MaturityDiploma" xml:space="preserve">
+    <value>Maturita</value>
+  </data>
+  <data name="MonetaAnalystText" xml:space="preserve">
+    <value>Vytváření reportů za použití nástrojů jako Microsoft Excel, SQL (Oracle), Microsoft Access, PowerBI a SAS BI. Součástí byla také tvorba procesních analýz
+pro komerční (SMB) backoffice, se zaměřením na komerční proces RWA (risk-weighted asset).</value>
+  </data>
+  <data name="MonetaEndUserServicesText" xml:space="preserve">
+    <value>Podpora interních koncových uživatelů po telefonu, emailem a dalšími kanály. Práce s ticketovacím systémem, eskalování důležitých záležitostí a také troška programování.
+Zde jsem se začal postupně učit hlavně VBScript u maker v Microsoft Excelu.</value>
+  </data>
+  <data name="Skills_ProgrammingLangAndTools" xml:space="preserve">
+    <value>Programovací jazyky a nástroje</value>
+  </data>
+  <data name="Skills_SoftwareAndPlatforms" xml:space="preserve">
+    <value>Zkušenosti se softwarem a platformami (implementace, customizace)</value>
+  </data>
+  <data name="MonetaEndUserServicesDate" xml:space="preserve">
+    <value>Červenec 2017 – Srpen 2018</value>
+  </data>
+  <data name="ECMBusinessConsultantDate" xml:space="preserve">
+    <value>Duben 2020 – Současnost</value>
+  </data>
+  <data name="MonetaAnalystDate" xml:space="preserve">
+    <value>Září 2018 – Březen 2020</value>
+  </data>
+  <data name="AsusTechnicianDate" xml:space="preserve">
+    <value>Říjen 2014 – Duben 2017</value>
+  </data>
+  <data name="InterestsText" xml:space="preserve">
+    <value>Řekněme že jsem opravdu aktivní člověk, i když z duše nenávidím běhání. Opravdu miluji zvedání těžkých věcí v posilovně. Také si rád zajdu na hory. Další věci kterými
+zaplňuji svůj volný čas jsou hraní her, programování pro zábavu a taky jedení jídla.</value>
+  </data>
+  <data name="Skills_Introduction" xml:space="preserve">
+    <value>Jako business konzultant jsem si stačil osahat hodně věcí, od Windows serverů, přes konfigurace IIC a také programování/skriptování.
+Níže jsou uvedeny pouze ty největší oblasti, s kterými se setkávám dennodenně.</value>
+  </data>
+  <data name="Skills_SoftwareAndPlatformsText" xml:space="preserve">
+    <value>Zkušenosti s těmito softwary a platformami mám jak v rámci implementace, tak také v customizaci řešení na míru šitém zákazníkovi.
+Samozřejmostí je také integrace na další navazující systémy. 
+Ve své kariéře jsem se také setkal s celou řadou ERP systémů jako např. Dynamics 365 Business Central, Helios Green, Karat! apod.</value>
+  </data>
+  <data name="Skills_Other" xml:space="preserve">
+    <value>Ostatní</value>
+  </data>
+  <data name="HighSchoolNaJizdarneText" xml:space="preserve">
+    <value>Mechanik elektrotechnik - počítačové a zabezpečovací systémy</value>
+  </data>
+  <data name="Cert_LinkedIn" xml:space="preserve">
+    <value>Aktuální certifikace naleznete na mém &lt;a href="https://www.linkedin.com/in/dalibor-hon/" target="_blank"&gt;LinkedIn profilu&lt;/a&gt;.
+</value>
+  </data>
+</root>
