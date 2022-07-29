@@ -2,32 +2,18 @@
 @inject IViewLocalizer Localizer
 
 <!-- Bootstrap switch for darkmode -->
-<div class="d-flex flex-row justify-content-center align-items-center" id="darkmodeSwitch">
-	<div class="btn-group ms-auto" role="button">
-		<button id="darkmode-button" class="btn">
-			<i class="fas fa-moon fa-fw d-none d-light-inline" title="@Localizer["SwitchToDarkMode"]"></i>
-			<i class="fas fa-sun fa-fw d-none d-dark-inline" title="@Localizer["SwitchToLightMode"]"></i>
-		</button>
-
-		<div class="btn-group @Model.DropVariation.ToString()" role="group">
-			<button id="btnGroupDrop1" type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"></button>
-			<ul class="dropdown-menu animate slideIn" aria-labelledby="btnGroupDrop1">
-				<li><a id="darkmode-button-l-1" class="dropdown-item" tabindex=0>@Localizer["SetLightMode"]</a></li>
-				<li><a id="darkmode-button-d-1" class="dropdown-item" tabindex=0>@Localizer["SetDarkMode"]</a></li>
-				<li><hr class="dropdown-divider"></li>
-				<li><a id="darkmode-forget" class="dropdown-item" tabindex=0>@Localizer["ResetMode"]</a></li>
-			</ul>
-		</div>
+<div class="btn-group ms-auto" role="button" id="darkmodeSwitch">
+	<button id="darkmode-button" class="btn @Model.ButtionSize">
+		<i class="fas fa-moon fa-fw d-none d-light-inline" title="@Localizer["SwitchToDarkMode"]"></i>
+		<i class="fas fa-sun fa-fw d-none d-dark-inline" title="@Localizer["SwitchToLightMode"]"></i>
+	</button>
+	<div class="btn-group @Model.DropVariation.ToString()" role="group">
+		<button id="btnGroupDrop1" type="button" class="btn @Model.ButtionSize dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"></button>
+		<ul class="dropdown-menu animate slideIn" aria-labelledby="btnGroupDrop1">
+			<li><a id="darkmode-button-l-1" class="dropdown-item" tabindex=0>@Localizer["SetLightMode"]</a></li>
+			<li><a id="darkmode-button-d-1" class="dropdown-item" tabindex=0>@Localizer["SetDarkMode"]</a></li>
+			<li><hr class="dropdown-divider"></li>
+			<li><a id="darkmode-forget" class="dropdown-item" tabindex=0>@Localizer["ResetMode"]</a></li>
+		</ul>
 	</div>
 </div>
-
-
-@*
-<!-- Old custom darkmode switch implementation -->
-<input type="checkbox" class="checkbox" id="darkMode">
-<label for="darkMode" class="label">
-	<i class="fas fa-moon"></i>
-	<i class='fas fa-sun'></i>
-	<span class='ball'></span>
-</label>
-*@

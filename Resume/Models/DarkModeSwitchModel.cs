@@ -11,5 +11,8 @@ namespace Resume.Models
         public DropVariation DropVariation { get; set; }
             = DropVariation.dropend; // Default animation
 
+        public string ButtionSize { get; set; }
+            = string.Empty; //Default size
+
     }
 }

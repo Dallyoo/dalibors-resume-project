@@ -30,15 +30,11 @@
     @include media-breakpoint-down(lg) {
         &.scrolled-down {
             transform: translateY(125%);
-            -webkit-transform: translateY(125%);
-            -moz-transform: translateY(125%);
             transition: all 0.3s ease-in-out;
         }
 
         &.scrolled-up {
             transform: translateY(0);
-            -webkit-transform: translateY(0);
-            -moz-transform: translateY(0);
             transition: all 0.3s ease-in-out;
         }
     }
