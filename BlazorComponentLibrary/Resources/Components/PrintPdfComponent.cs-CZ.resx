@@ -129,4 +129,7 @@
   <data name="P_ConfirmDownload" xml:space="preserve">
     <value>Prosím potvrďte stažení vygenerovaného PDF souboru.</value>
   </data>
+  <data name="ErrorNoPageToPrint" xml:space="preserve">
+    <value>Pro tuto stránku není nadefinovaná verze k tisknutí.</value>
+  </data>
 </root>

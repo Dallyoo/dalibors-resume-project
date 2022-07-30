@@ -109,4 +109,7 @@
   <data name="Button_DownloadPDF" xml:space="preserve">
     <value>Download PDF</value>
   </data>
+  <data name="ErrorNoPageToPrint" xml:space="preserve">
+    <value>There is no printable version for this page.</value>
+  </data>
 </root>
