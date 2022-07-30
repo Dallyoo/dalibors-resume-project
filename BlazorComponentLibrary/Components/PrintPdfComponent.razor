@@ -31,7 +31,7 @@
 						@(ShowError ? ErrorMessage : Localizer["P_ConfirmDownload"])
 					</p>
 				</div>
-				<div class="d-flex justify-content-center Spinner @(Spin ? "spinner-border" : "")"/>
+				<div class="d-flex justify-content-center spinner @(Spin ? "spinner-border" : "")"/>
 			</div>
 			<div class="modal-footer" style="@(Spin ? "border-top: none;" : "")">
 				<button type="button" class="btn btn-secondary @(Spin ? "d-none" : "")" data-bs-dismiss="modal">@Localizer["Button_Close"]</button>
