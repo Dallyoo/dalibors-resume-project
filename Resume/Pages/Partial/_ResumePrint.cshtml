@@ -5,37 +5,68 @@
 	Layout = "";
 }
 
-<!-- Bootstrap and custom styles-->
-<link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
-<link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="css/styles.css" type="text/css">
-
 <html>
-<body data-bs-color-scheme="light">
-	<div class="container-fluid p-0" id="resume">
-		<!-- About-->
-		<section class="resume-section about-section" id="about">
-			<div class="resume-section-content">
+<head>
+	<meta charset="utf-8">
+	<!-- Dev icons -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" type="text/css">
+	<!-- Bootstrap and custom styles-->
+	<link rel="stylesheet" href="css/styles.css" type="text/css">
+	<!-- PDF styling -->
+	<style>
+		* {
+			font-family: Helvetica !important;
+		}
+
+		h1{
+			font-size: 2.5em;
+		}
+
+		h2{
+			font-size: 2em;
+		}
+
+		.dev-icons{
+			font-size: 2.3em;
+		}
+
+		p,
+		a,
+		.text-primary{
+			font-size: 0.95em;
+		}
+
+		.subheading{
+			font-size: 0.85em;
+		}
+
+		.uppercase{
+			text-transform: uppercase;
+		}
+
+	</style>
+</head>
+	<body data-bs-color-scheme="light" class="printable">
+		<div class="container-fluid p-0" id="resume">
+			<!-- About-->
+			<div class="resume-section-content" style="page-break-after:always;">
 				<span class="d-block d-lg-none">
 					<img class="img-fluid img-profile-lg rounded-circle mx-auto mb-2" src="~/assets/img/profile.png" alt="..." />
 				</span>
 				<h1 class="mb-0">
-					@SharedLocalizer["Name"]
+				@SharedLocalizer["Name"]
 					<span class="text-primary">@SharedLocalizer["Surname"]</span>
 				</h1>
-				<div class="subheading mb-5 ">
+				<div class="mb-5 uppercase">
 					<a href="mailto:hon.dalibor@gmail.com">hon.dalibor@gmail.com</a>
 					<br />
 					+420 732 932 559
 				</div>
 				<p class="lead mb-5">@Localizer["About_Introduction"]</p>
 			</div>
-		</section>
-		<hr class="m-0" />
 
-		<!-- Experience-->
-		<section class="resume-section" id="experience">
-			<div class="resume-section-content ">
+			<!-- Experience-->
+			<div class="resume-section-content mt-5">
 				<h2 class="mb-5">@SharedLocalizer["Nav_Experience"]</h2>
 				<div class="d-flex flex-column flex-md-row justify-content-between mb-5">
 					<div class="flex-grow-1">
@@ -70,30 +101,26 @@
 					<div class="flex-shrink-0"><span class="text-primary">@Localizer["AsusTechnicianDate"]</span></div>
 				</div>
 			</div>
-		</section>
-		<hr class="m-0" />
+			<hr class="m-0" />
 
-		<!-- Education-->
-		<section class="resume-section" id="education">
-			<div class="resume-section-content ">
+			<!-- Education-->
+			<div class="resume-section-content mt-5">
 				<h2 class="mb-5">@SharedLocalizer["Nav_Education"]</h2>
 				<div class="d-flex flex-column flex-md-row justify-content-between mb-5">
 					<div class="flex-grow-1">
 						<h3 class="mb-0">@Localizer["HighSchoolNaJizdarne"]</h3>
 						<div class="subheading mb-3">@Localizer["MaturityDiploma"]</div>
-						<div>@Localizer["HighSchoolNaJizdarneText"]</div>
+						<p>@Localizer["HighSchoolNaJizdarneText"]</p>
 					</div>
 					<div class="flex-shrink-0"><span class="text-primary">2010 - 2014</span></div>
 				</div>
 			</div>
-		</section>
-		<hr class="m-0" />
+			<hr class="m-0" />
 
-		<!-- Skills-->
-		<section class="resume-section" id="skills">
-			<div class="resume-section-content ">
+			<!-- Skills-->
+			<div class="resume-section-content mt-5">
 				<h2 class="mb-5">@SharedLocalizer["Nav_Skills"]</h2>
-				<p class="lead mb-5">@Localizer["Skills_Introduction"]</p>
+				<p class="mb-5">@Localizer["Skills_Introduction"]</p>
 				<div class="subheading mb-3">@Localizer["Skills_ProgrammingLangAndTools"]</div>
 				<ul class="list-inline dev-icons">
 					<li class="list-inline-item"><i class="fab fa-html5"></i></li>
@@ -143,18 +170,16 @@
 						<span class="fa-li"><i class="fa-solid fa-circle" style="font-size:smaller"></i></span>
 						<a href="https://www.nintex.com/process-automation/k2-software/" target="_blank">K2 Five/K2 Cloud</a>
 					</li>
-
 				</ul>
+				<br />
 				<p>@Localizer["Skills_SoftwareAndPlatformsText"]</p>
 			</div>
-		</section>
-		<hr class="m-0" />
+			<hr class="m-0" />
 
-		<!-- Awards-->
-		<section class="resume-section" id="awards">
-			<div class="resume-section-content ">
+			<!-- Awards-->
+			<div class="resume-section-content mt-5">
 				<h2 class="mb-5">@SharedLocalizer["Nav_Certifications"]</h2>
-				<p class="lead mb-5">@Html.Raw(Localizer["Cert_LinkedIn"])</p>
+				<p class="mb-5">@Html.Raw(Localizer["Cert_LinkedIn"])</p>
 				<ul class="fa-ul mb-0">
 					<li>
 						<span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
@@ -181,18 +206,16 @@
 						ABBYY Vantage Business Analyst
 					</li>
 				</ul>
+				<br />
 			</div>
-		</section>
-		<hr class="m-0" />
+			<hr class="m-0" />
 
-		<!-- Interests-->
-		<section class="resume-section" id="interests">
-			<div class="resume-section-content ">
+			<!-- Interests-->
+			<div class="resume-section-content mt-5">
 				<h2 class="mb-5">@SharedLocalizer["Nav_Interests"]</h2>
 				<p>@Localizer["InterestsText"]</p>
 			</div>
-		</section>	
-	</div>
-</body>
+		</div>
+	</body>
 </html>
 
