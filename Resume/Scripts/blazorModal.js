@@ -28,7 +28,8 @@ async function attemptConnect() {
             throw new Error("Could not connect to the server.");
         })
         .catch((error) => {
-            alert("Server is unavailable. Please try again later.");
+            console.error("Server is unavailable. Please try again later.");
+            alert("Server is unavailable. Please try again later or reload the page.");
         })
 }
 
@@ -39,6 +40,7 @@ async function blazorReconnect() {
         if (!result) {
             // If the server responded and refused to reconnect, log it 
             console.error("Could not reconect to server.");
+            alert("Could not reconect to server. Please try again later or reload the page.");
         } else {
             // Reconnected!
             return;
