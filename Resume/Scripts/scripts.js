@@ -22,6 +22,13 @@ import "./blazorModal.js";
 });
 */
 
+// Fade in body and hide page loading spinner
+$(window).on('load', function () {
+    $("#pageLoading").fadeOut("slow", function () {
+        $("#page").fadeTo("fast", "1");
+    });
+});
+
 /**
  * File downloader wrapper for JSInterop
  * @param {any} fileName name of the saved file

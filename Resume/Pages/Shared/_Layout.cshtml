@@ -26,15 +26,13 @@
 		<!-- Bootstrap-dark-5 -->
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap-dark-5@1.1.3/dist/js/darkmode.min.js" asp-fallback-src="~/js/darkmode.min.js"></script>
 	</environment>
-
 	<!-- Darkmode switch -->
 	<script type="text/javascript">
 		// Fire up onDomContentLoaded function early, so we prevent theme flickering on page loads
 		darkmode.constructor.onDOMContentLoaded();
 	</script>
 </head>
-	<body id="page-top">
-
+<body id="page-top">
 	<!-- Hosting environment for JavaScript -->
 	<input id="hostingEnv" type="hidden" value=@HostingEnv.EnvironmentName />
 
@@ -53,13 +51,6 @@
 
 	<!-- JQuery -->
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script type="text/javascript">
-		$(window).on('load', function() {
-			$("#pageLoading").fadeOut("slow", function() {
-				$("#page").fadeTo("fast", "1");
-			});
-		});
-	</script>
 	<!-- Popper -->
 	<script src="https://unpkg.com/@@popperjs/core@@2.11.5/dist/umd/popper.min.js"></script>
 	<!-- Bootstrap core JS -->
