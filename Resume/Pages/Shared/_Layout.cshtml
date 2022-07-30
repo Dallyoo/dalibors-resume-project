@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@inject Microsoft.AspNetCore.Hosting.IHostingEnvironment HostingEnv
+
+<!DOCTYPE html>
 <html lang="en" data-bs-color-scheme>
 <head>
 	<!-- <base href="/"> -->
@@ -31,10 +33,16 @@
 		darkmode.constructor.onDOMContentLoaded();
 	</script>
 </head>
-<body id="page-top">
+	<body id="page-top">
+
+	<!-- Hosting environment for JavaScript -->
+	<input id="hostingEnv" type="hidden" value=@HostingEnv.EnvironmentName />
 
 	<!-- Page loader spinner -->
 	<partial name="~/Pages/Shared/Partial/_PageLoad.cshtml" />
+
+	<!-- Blazor reconnection popup-->
+	<partial name="~/Pages/Shared/Partial/_BlazorModal.cshtml" />
 
 	<div class="page" id="page">
 		<!-- Page render -->
@@ -69,6 +77,10 @@
 					configureSignalR: builder => {
 						//builder.withUrl("_blazor"),
 						builder.configureLogging("debug") // LogLevel.Debug
+					},
+					reconnectionOptions: {
+						maxRetries: 3,
+						retryIntervalMilliseconds: 2000
 					}
 				});
 			})()
@@ -77,7 +89,12 @@
 	<environment exclude="Development">
 		<script type="text/javascript">
 			(function start() {
-				Blazor.start();
+				Blazor.start({
+					reconnectionOptions: {
+						maxRetries: 3,
+						retryIntervalMilliseconds: 2000
+					}
+				});
 			})()
 		</script>
 		<script src="~/js/bundle.min.js"></script>

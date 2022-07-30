@@ -3,7 +3,7 @@
 //
 
 // Fade in section elements
-const observer = new IntersectionObserver(entries => {
+const hidemeObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         const element = entry.target;
         if (entry.isIntersecting) {
@@ -14,7 +14,7 @@ const observer = new IntersectionObserver(entries => {
 });
 
 const hideme = document.querySelectorAll(".hideme");
-hideme.forEach(hideme => observer.observe(hideme));
+hideme.forEach(hideme => hidemeObserver.observe(hideme));
 
 // Elements shrink on scroll
 $(document).ready(function () {

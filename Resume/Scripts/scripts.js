@@ -5,6 +5,9 @@
 // Import animations
 import "./animations.js";
 
+// Import Blazor reconnection modal
+import "./blazorModal.js";
+
 // Bootstrap dropdown placement in navbar
 // https://stackoverflow.com/questions/56198913/allow-popper-js-for-dropdowns-in-navbar-on-bootstrap-4
 //

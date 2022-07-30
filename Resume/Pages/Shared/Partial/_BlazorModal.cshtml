@@ -1,0 +1,90 @@
+﻿@inject IViewLocalizer Localizer
+
+<!-- Blazor popup modal -->
+<environment include="Production">
+	<div class="modal fade" tabindex="-1" id="components-reconnect-modal" class="components-reconnect-hide blazor-reconnect-modal" data-bs-backdrop="static">
+		<div class="failed">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">@Localizer["LostConnection"]</h5>
+					</div>
+					<div class="modal-body">
+						<p>@Localizer["ConnectionToServerFailed"]</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" onclick="location.reload()">@Localizer["Reload"]</button>
+						<button type="button" class="btn btn-primary" onclick="window.blazorReconnect()">@Localizer["Reconnect"]</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="rejected">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">@Localizer["ConnectionRejected"]</h5>
+					</div>
+					<div class="modal-body">
+						<p>@Localizer["ConnectionRejectedBody"]</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" onclick="location.reload()">@Localizer["Reload"]</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</environment>
+<environment include="Development">
+	<div class="modal fade" tabindex="-1" id="components-reconnect-modal" class="components-reconnect-hide blazor-reconnect-modal" data-bs-backdrop="static">
+		<div class="show">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">@Localizer["LostConnection"]</h5>
+					</div>
+					<div class="modal-body">
+						<p>@Localizer["AttemptingToReconnect"]</p>
+						@Localizer["ConnectionAttempt"]
+						<p>@Localizer["WaitForReconnect"]</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" onclick="location.reload()">@Localizer["Reload"]</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="failed">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">@Localizer["LostConnection"]</h5>
+					</div>
+					<div class="modal-body">
+						<p>@Localizer["ConnectionToServerFailed"]</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" onclick="location.reload()">@Localizer["Reload"]</button>
+						<button type="button" class="btn btn-primary" onclick="window.blazorReconnect()">@Localizer["Reconnect"]</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="rejected">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">@Localizer["ConnectionRejected"]</h5>
+					</div>
+					<div class="modal-body">
+						<p>@Localizer["ConnectionRejectedBody"]</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" onclick="location.reload()">@Localizer["Reload"]</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</environment>
