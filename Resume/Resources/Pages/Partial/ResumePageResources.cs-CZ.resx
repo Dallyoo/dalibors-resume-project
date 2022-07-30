@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About_Introduction" xml:space="preserve">
-    <value>Ahoj! Jsem Dalibor a mou momentální pracovní rolí je Business Konzultant. Snažím se udržovat naše zákazníky spokojené, a naše vývojáře při smyslech.</value>
+    <value>Ahoj! Jsem Dalibor a má momentální pracovní role je Business Konzultant. Snažím se udržovat naše zákazníky spokojené, a naše vývojáře při smyslech.</value>
   </data>
   <data name="AsusTechnicianText" xml:space="preserve">
     <value>Opravování základních desek všeho druhu na úrovni malých součástek. Pájení, měření (osciloskopem), a samozřejmě čtení v elektronických schématech.</value>
@@ -187,7 +187,6 @@ Ve své kariéře jsem se také setkal s celou řadou ERP systémů jako např. 
     <value>Mechanik elektrotechnik - počítačové a zabezpečovací systémy</value>
   </data>
   <data name="Cert_LinkedIn" xml:space="preserve">
-    <value>Aktuální certifikace naleznete na mém &lt;a href="https://www.linkedin.com/in/dalibor-hon/" target="_blank"&gt;LinkedIn profilu&lt;/a&gt;.
-</value>
+    <value>Aktuální certifikace naleznete na mém &lt;a href="https://www.linkedin.com/in/dalibor-hon/" target="_blank"&gt;LinkedIn profilu&lt;/a&gt;.</value>
   </data>
 </root>
