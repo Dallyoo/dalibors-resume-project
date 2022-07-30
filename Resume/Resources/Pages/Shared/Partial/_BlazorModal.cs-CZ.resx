@@ -133,7 +133,7 @@
     <value>Připojení k serveru selhalo. Prosím zkuste se manuálně připojit, nebo obnovit tuto stránku.</value>
   </data>
   <data name="LostConnection" xml:space="preserve">
-    <value>Připojení k serveru bylo ztraceni</value>
+    <value>Připojení k serveru bylo ztraceno</value>
   </data>
   <data name="Reconnect" xml:space="preserve">
     <value>Připojit k serveru</value>
