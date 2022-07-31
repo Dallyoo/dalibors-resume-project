@@ -7,14 +7,13 @@
 @{
 	ViewData["Title"] = $"{SharedLocalizer["S_Resume"]} - {Localizer["PageTitle"].Value}";
 }
-
 <!-- About page -->
 <section class="about-page-section" id="aboutPage">
 	<div class="about-page-section-content">
 		<div class="d-flex flex-row mb-5">
 			<!-- Back button -->
 			<div class="p-2">
-				<button class="btn" onclick="history.back()"><i class="fa fa-arrow-left me-2"></i>@SharedLocalizer["BackButton"]</button>
+				<a class="btn" asp-page="/Index"><i class="fa fa-arrow-left me-2"></i>@SharedLocalizer["BackButton"]</a>
 			</div>
 			<div class="p-2" style="list-style: none"> 
 				<!-- Culture navbar picker -->
