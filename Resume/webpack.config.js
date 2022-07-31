@@ -134,8 +134,7 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: devMode ? "css/styles.css" : "css/styles.min.css",
         }),
-        // Copy plugin for bootstrap-dark-5 JS files,
-        // because we need it as separate file
+        // Copy plugin for required static files
         new CopyPlugin({
             patterns: [
                 {
@@ -149,6 +148,15 @@ module.exports = {
                         ignore: ["**.ts", "**.ts.map"],
                     },
                 },
+                {
+                    from: "img/",
+                    to: "assets/img",
+                    toType: "dir",
+                    context: "Styles/",
+                    globOptions: {
+                        dot: true,
+                    },
+                }
             ],
         }),
     ],
