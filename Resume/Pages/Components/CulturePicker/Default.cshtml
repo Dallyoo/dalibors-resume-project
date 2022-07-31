@@ -2,9 +2,6 @@
 @inject IViewLocalizer Localizer
 @inject IStringLocalizer<SharedResources> SharedLocalizer
 @model Resume.Models.CulturePickerModel
-@{
-	var currentCulture = Model.CurrentUICulture.Name;
-}
 
 <div class="@(Model.RenderAsButton ? "" : "nav-item") dropdown-center">
 	<a class="@(Model.RenderAsButton ? "btn" : "nav-link") dropdown-toggle dropdown-center" id="cultureSwitcherMenu" role="button" href="" data-bs-toggle="dropdown" aria-expanded="false">
@@ -14,12 +11,12 @@
 	<ul class="dropdown-menu animate slideIn" aria-labelledby="cultureSwitcherMenu">
 		@foreach (var culture in Model.SupportedCultures)
 		{
-			var regionInfo = new RegionInfo(culture.LCID);
 			var nativeName = culture.NativeName;
+			var isoCountryCode = Model.IsoLanguageCodeToIsoCountryCode(culture.Name);
 			nativeName = char.ToUpper(nativeName.First()) + nativeName.Substring(1);
 			<li>
 				<a asp-route-culture="@culture.Name" class="dropdown-item">
-					<span class="fi fi-@regionInfo.Name.ToLower() me-2" position-absolute" aria-hidden="true"></span>
+					<span class="fi fi-@isoCountryCode.ToLower() me-2" position-absolute" aria-hidden="true"></span>
 					<span>@nativeName</span>
 					<i class="@(Model.CurrentUICulture.Name == culture.Name ? "fa fa-check" : "")" aria-hidden="true"></i>
 				</a>

@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Http.Connections;
 using Resume.Middlewares;
 using Resume.Extensions;
+using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Localization;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddHttpContextAccessor();
@@ -15,13 +17,14 @@ builder.Services.Configure<RequestLocalizationOptions>(options =>
 {
     var supportedCultures = new[]
     {
-        "cs-CZ",
+        "cs",
         "en-US"
     };
 
-    options.SetDefaultCulture("cs-CZ");
-    options.AddSupportedUICultures(supportedCultures);
+    options.SetDefaultCulture("en-US");
+    options.DefaultRequestCulture = new RequestCulture("en-US");
     options.AddSupportedCultures(supportedCultures);
+    options.AddSupportedUICultures(supportedCultures);
     options.FallBackToParentUICultures = true;
     /*
     options
@@ -32,10 +35,6 @@ builder.Services.Configure<RequestLocalizationOptions>(options =>
 });
 
 builder.Services.AddScoped<RequestLocalizationCookiesMiddleware>();
-
-// Logging
-builder.Logging.ClearProviders();
-builder.Logging.AddConsole();
 
 // Add services to the container.
 var mvcBuilder = builder.Services
@@ -82,11 +81,12 @@ else
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseRouting();
 // Localization
-app.UseRequestLocalization();
+var localizationOptions = app.Services.GetService<IOptions<RequestLocalizationOptions>>().Value;
+app.UseRequestLocalization(localizationOptions);
 // Will remember to write the cookie 
 app.UseRequestLocalizationCookies();
-app.UseRouting();
 app.MapRazorPages();
 app.MapBlazorHub(options =>
 {
