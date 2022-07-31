@@ -15,12 +15,15 @@
 		@foreach (var culture in Model.SupportedCultures)
 		{
 			var regionInfo = new RegionInfo(culture.LCID);
+			var nativeName = culture.NativeName;
+			nativeName = char.ToUpper(nativeName.First()) + nativeName.Substring(1);
 			<li>
-				<a asp-route-culture="@culture.Name" 
-				class="dropdown-item">@culture.NativeName<i class="@(Model.CurrentUICulture.Name == culture.Name ? "fa fa-check" : "") position-absolute" aria-hidden="true"></i>
+				<a asp-route-culture="@culture.Name" class="dropdown-item">
+					<span class="fi fi-@regionInfo.Name.ToLower() me-2" position-absolute" aria-hidden="true"></span>
+					<span>@nativeName</span>
+					<i class="@(Model.CurrentUICulture.Name == culture.Name ? "fa fa-check" : "")" aria-hidden="true"></i>
 				</a>
 			</li>
 		}
-
 	</ul>
 </div>

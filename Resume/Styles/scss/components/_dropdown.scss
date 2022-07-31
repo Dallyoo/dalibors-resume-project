@@ -3,19 +3,22 @@
         animation-duration: 0.3s;
         animation-fill-mode: both;
     }
-
-    .dropdown-menu {
-        margin-left: 0.25em;
-        margin-right: 0.25em;
-    }
 }
 
 .dropdown-menu {
     .dropdown-item {
-        white-space: pre-line;
+        display: flex;
 
         .fa {
             line-height: unset;
+            margin-left: auto;
+            align-self: center;
+            padding-left: 0.35em;
+        }
+
+        .fi {
+            width: 12px;
+            min-width: 12px;
         }
     }
 }
@@ -52,4 +55,3 @@
     -webkit-animation-name: slideIn;
     animation-name: slideIn;
 }
-

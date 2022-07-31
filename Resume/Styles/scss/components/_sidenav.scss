@@ -19,12 +19,6 @@
             outline-color: lighten($primary, 15%);
         }
     }
-
-    .dropdown-menu {
-        width: -moz-available; /* WebKit-based browsers will ignore this. */
-        width: -webkit-fill-available; /* Mozilla-based browsers will ignore this. */
-        width: fill-available;
-    }
 }
 
 @include media-breakpoint-down(lg) {
@@ -90,6 +84,18 @@
 
                     .nav-link {
                         display: block;
+                    }
+
+                    .dropdown-menu {
+                        width: -moz-available; /* WebKit-based browsers will ignore this. */
+                        width: -webkit-fill-available; /* Mozilla-based browsers will ignore this. */
+                        width: fill-available;
+                        margin-left: 0.25em;
+                        margin-right: 0.25em;
+
+                        .dropdown-item {
+                            white-space: pre-line;
+                        }
                     }
                 }
             }
