@@ -2,6 +2,11 @@
 // Custom Blazor reconnection modal
 //
 
+#components-reconnect-modal {
+    // Always stay on top of everything
+    z-index: 9999;
+}
+
 .blazor-reconnect-modal > div {
     position: fixed;
     top: 0;
