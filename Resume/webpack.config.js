@@ -6,6 +6,8 @@ const postcssPresetEnv = require("postcss-preset-env");
 const nodeModulesPath = path.resolve(__dirname, 'node_modules');
 // We are getting 'process.env.NODE_ENV' from the NPM scripts
 const devMode = process.env.NODE_ENV !== "production";
+
+/** @type {import('webpack').Configuration} */
 module.exports = {
     // Set the caching filesystem
     cache: {
@@ -18,11 +20,19 @@ module.exports = {
     // Webpack needs to know where to start the bundling process,
     // so we define the Sass file under './Styles' directory
     entry: {
-        main: "./Styles/scss/styles.scss",
         "bundle": "./Scripts/scripts.js",
         "bundle.min": "./Scripts/scripts.js",
     },
     devtool: "source-map",
+    resolve: {
+        extensions: ['.tsx', '.ts', '.js'],
+    },
+    externalsType: "global",
+    externals: {
+        bootstrap: "bootstrap",
+        darkmode: "darkmode",
+        jQuery: ["jquery", "$"]
+    },
     output: {
         path: path.resolve(__dirname, "wwwroot"),
         // Specify the base path
@@ -34,6 +44,12 @@ module.exports = {
         // Array of rules that tells Webpack how the modules (output)
         // will be created
         rules: [
+            {
+                // Typescript compilation support
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
+            },
             {
                 // Look for Sass files and process them according to the
                 // rules specified in the different loaders
@@ -103,14 +119,7 @@ module.exports = {
                 ],
             },
             {
-                // Adds support for javascript
-                test: /\.(js)$/,
-                type: 'asset/resource',
-                generator: {
-                    filename: 'js/[name][ext]',
-                },
-
-                // Adds support to load images in your CSS rules. It looks for
+                // Adds support to load images
                 test: /\.(png|jpe?g|gif|svg)$/,
                 type: 'asset/resource',
                 generator: {
@@ -138,21 +147,10 @@ module.exports = {
         new CopyPlugin({
             patterns: [
                 {
-                    from: "js/",
-                    to: "js",
-                    toType: "dir",
-                    context: "node_modules/bootstrap-dark-5/dist/",
-                    globOptions: {
-                        dot: true,
-                        gitignore: true,
-                        ignore: ["**.ts", "**.ts.map"],
-                    },
-                },
-                {
                     from: "img/",
                     to: "assets/img",
                     toType: "dir",
-                    context: "Styles/",
+                    context: "wwwroot_src/assets/",
                     globOptions: {
                         dot: true,
                     },
@@ -162,7 +160,7 @@ module.exports = {
     ],
     // Minify JS files
     optimization: {
-        minimize: true,
+        minimize: devMode ? false : true,
         minimizer: [
             new TerserPlugin({
                 extractComments: false,

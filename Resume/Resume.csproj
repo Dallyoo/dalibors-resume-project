@@ -62,15 +62,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Scripts\blazorModal.js">
+    <None Update="wwwroot_src\ts\blazor-modal.ts">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>
-    <None Update="Scripts\animations.js">
+    <None Update="wwwroot_src\ts\animations.ts">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>
-    <None Update="Scripts\scripts.js">
+    <None Update="wwwroot_src\ts\main.ts">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>
