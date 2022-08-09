@@ -57,5 +57,18 @@
         "umd/popper.min.js.map"
       ]
     }
+  ,
+{
+  "provider": "cdnjs",
+  "library": "devicon@2.15.1",
+  "destination": "wwwroot/lib/devicon/",
+  "files": [
+    "devicon.min.css",
+    "fonts/devicon.eot",
+    "fonts/devicon.svg",
+    "fonts/devicon.ttf",
+    "fonts/devicon.woff"
   ]
+}
+]
 }

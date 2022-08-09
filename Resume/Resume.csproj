@@ -23,6 +23,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="wwwroot_src\assets\favicon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="package-lock.json" />
     <None Include="package.json" />
     <None Include="Pages\Components\CulturePicker\Default.cshtml" />
@@ -66,7 +70,7 @@
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>
-    <None Update="wwwroot_src\ts\animations.ts">
+    <None Update="wwwroot_src\ts\website-animations.ts">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>

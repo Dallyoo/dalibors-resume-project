@@ -9,11 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="wwwroot\js\PrintPdfComponent.js" />
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
   <ItemGroup>
-    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <None Include="wwwroot\js\printpdf.component.js" />
   </ItemGroup>
 
   <ItemGroup>

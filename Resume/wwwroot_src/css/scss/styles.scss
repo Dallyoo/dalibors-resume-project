@@ -1,32 +1,33 @@
-// 
+//
 // Styles
 //
 
 // Import variables
-@import "./variables.scss";
+@import "./variables";
 
 // Import Bootstrap
 @import "bootstrap";
 //@import "bootstrap-dark-5/scss/bootstrap-blackbox.scss";
 
 // Import darkmode overrides
-@import "./variables/darkmode.scss";
+// Overrides are set to bootstrap variables, so they must be included after bootstrap
+@import "./variables/darkmode";
 
 // Import Font Awesome
-@import "@fortawesome/fontawesome-free/scss/fontawesome.scss";
-@import "@fortawesome/fontawesome-free/scss/solid.scss";
-@import "@fortawesome/fontawesome-free/scss/brands.scss";
+@import "@fortawesome/fontawesome-free/scss/fontawesome";
+@import "@fortawesome/fontawesome-free/scss/solid";
+@import "@fortawesome/fontawesome-free/scss/brands";
 
-// Components
-@import "./components/sidenav.scss";
-@import "./components/icons.scss";
-@import "./components/dropdown.scss";
-@import "./components/dark-mode-switch.scss";
-@import "./components/_blazor-modal.scss";
+// Page components
+@import "./components/sidenav";
+@import "./components/icons";
+@import "./components/dropdown";
+@import "./components/dark-mode-switch";
+@import "./components/blazor-modal";
 
-// Sections
-@import "./sections/resume-section.scss";
-@import "./sections/about-page-section.scss";
+// Page sections
+@import "./sections/resume-section";
+@import "./sections/about-page-section";
 
 // Global CSS
 @import "./global.scss";
