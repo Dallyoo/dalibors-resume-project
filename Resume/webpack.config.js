@@ -17,20 +17,18 @@ module.exports = {
         version: "dev_1",
     },
     // Tells Webpack which built-in optimizations to use
-    // If you leave this out, Webpack will default to "production"
     mode: devMode ? "development" : "production",
     // Specify output path and bundle name
     output: {
         // Specify the base path
         path: path.resolve(__dirname, "wwwroot"),
         // The name of the output bundle.
-        filename: `js/[name]${devMode ? "" : ".[contenthash]"}.js`,
+        filename: `js/[name]${devMode ? "" : ".min.[contenthash]"}.js`,
     },
     // Webpack needs to know where to start the bundling process
     entry: {
         // Main bundle entrypoint
         "bundle": path.resolve(__dirname, "wwwroot_src/ts/main.ts"),
-        "bundle.min": path.resolve(__dirname, "wwwroot_src/ts/main.ts"),
     },
     // Externals so we dont bundle our imported libraries, as we use then as CDN and or standalone JS files
     externals: {
@@ -42,7 +40,6 @@ module.exports = {
     },
     module: {
         // Array of rules that tells Webpack how the modules (output)
-        // will be created
         rules: [
             {
                 // All files with a ".ts" or ".tsx" extension will be handled by "ts-loader".
@@ -87,6 +84,7 @@ module.exports = {
                                 plugins: devMode
                                     ? () => []
                                     : () => [
+                                        postcssUrl(postCssUrlOptions),
                                         postcssPresetEnv({
                                             // Compile our CSS code to support browsers
                                             // that are used in more than 1% of the
@@ -97,7 +95,7 @@ module.exports = {
                                             browsers: [">1%"]
                                         }),
                                         require("cssnano")()
-                                    ]
+                                    ],
                             }
                         }
                     },
@@ -144,7 +142,7 @@ module.exports = {
         // Configuration options for MiniCssExtractPlugin
         // In case of imported CSS files through JS/TS
         new MiniCssExtractPlugin({
-            filename: devMode ? "css/styles.css" : "css/styles.[contenthash].css",
+            filename: devMode ? "css/styles.css" : "css/styles.min.[contenthash].css",
         }),
         // Copy plugin for required static files
         new CopyPlugin({
@@ -162,6 +160,17 @@ module.exports = {
             ],
         }),
         // Clean static folders, because we do use hashes
+        new CleanWebpackPlugin({
+            dry: false,
+            verbose: true,
+            cleanStaleWebpackAssets: true,
+            protectWebpackAssets: true,
+            cleanOnceBeforeBuildPatterns: [
+                "**/*",
+                "!lib/**"
+            ],
+
+        }),
     ],
     // Minify JS files on production mode
     optimization: {
@@ -169,7 +178,7 @@ module.exports = {
         minimizer: [
             new TerserPlugin({
                 extractComments: false,
-                test: /\.min.js(\?.*)?$/i,
+                test: /\.js(\?.*)?$/i,
                 terserOptions: {
                     sourceMap: true,
                 },

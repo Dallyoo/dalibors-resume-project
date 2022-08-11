@@ -85,19 +85,19 @@ class Main {
             const darkModeSelector = document.querySelector("div[id=darkmodeSwitch]");
             if (darkModeSelector != null) {
                 (<HTMLElement>document.querySelector("#darkmode-button")).onclick = function () {
-                    darkmode.toggleDarkMode();
+                    window["darkmode"].toggleDarkMode();
                 };
 
                 (<HTMLElement>document.querySelector("#darkmode-button-l-1")).onclick = function () {
-                    darkmode.toggleDarkMode();
+                    window["darkmode"].toggleDarkMode();
                 };
 
                 (<HTMLElement>document.querySelector("#darkmode-button-d-1")).onclick = function () {
-                    darkmode.toggleDarkMode();
+                    window["darkmode"].toggleDarkMode();
                 };
 
                 (<HTMLElement>document.querySelector("#darkmode-forget")).onclick = function () {
-                    darkmode.toggleDarkMode();
+                    window["darkmode"].toggleDarkMode();
                 };
             };
 

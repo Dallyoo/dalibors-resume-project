@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "allowJs": true,
     "noImplicitAny": false,
     "noEmitOnError": true,
     "removeComments": false,
@@ -10,6 +9,8 @@
   },
   "exclude": [
     "node_modules",
-    "wwwroot"
+    "wwwroot",
+    "obj",
+    "bin"
   ]
 }

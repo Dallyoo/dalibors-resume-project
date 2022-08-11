@@ -1,5 +1,35 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptCompileOnSaveEnabled>False</TypeScriptCompileOnSaveEnabled>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptCompileOnSaveEnabled>False</TypeScriptCompileOnSaveEnabled>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptCompileOnSaveEnabled>False</TypeScriptCompileOnSaveEnabled>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptCompileOnSaveEnabled>False</TypeScriptCompileOnSaveEnabled>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptCompileOnSaveEnabled>False</TypeScriptCompileOnSaveEnabled>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptCompileOnSaveEnabled>False</TypeScriptCompileOnSaveEnabled>
+  </PropertyGroup>
+
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
@@ -12,24 +42,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="dist\**" />
-    <Compile Remove="wwwroot\fonts\**" />
-    <Content Remove="dist\**" />
-    <Content Remove="wwwroot\fonts\**" />
-    <EmbeddedResource Remove="dist\**" />
-    <EmbeddedResource Remove="wwwroot\fonts\**" />
-    <None Remove="dist\**" />
-    <None Remove="wwwroot\fonts\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="wwwroot_src\assets\favicon.ico" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <None Include="libman.json" />
     <None Include="package-lock.json" />
     <None Include="package.json" />
-    <None Include="Pages\Components\CulturePicker\Default.cshtml" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -49,35 +64,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\assets\fonts\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\BlazorComponentLibrary\BlazorComponentLibrary.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Update="Resources\Pages\AboutPage.cs-CZ.resx">
-      <Generator></Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Pages\AboutPage.resx">
-      <Generator></Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="wwwroot_src\ts\blazor-modal.ts">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </None>
-    <None Update="wwwroot_src\ts\website-animations.ts">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </None>
-    <None Update="wwwroot_src\ts\main.ts">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </None>
-  </ItemGroup>
+  <Target Name="WebpackBuild" BeforeTargets="BeforeBuild">
+    <Message Text="Building static files with webpack." Importance="high" />
+    <Message Text="Configuration: '$(Configuration)'" Importance="high" />
+    <Exec Condition="$(Configuration) == 'Debug'" Command="npm run build-dev" />
+    <Exec Condition="$(Configuration) == 'Release'" Command="npm run build-prod" />
+  </Target>
 
 </Project>
