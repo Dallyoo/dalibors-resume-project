@@ -26,3 +26,5 @@ This page was created as a fun project of mine, trying to learn something more a
 I decided to start by using [Start Bootstrap](https://startbootstrap.com/theme/resume) ([Licensed under MIT](https://opensource.org/licenses/MIT)) as I did not have any previous experience on writing plain HTML, using CSS and of course with Bootstrap. I modified it for my needs, with some cool tweaks and features like ASP.NET localization, Blazor components for some of the page feautures and such.
 
 When I initially started, I did not have much experience with web development, so this project took longer than I expected. Anyways it was a great journey (that doesn't end), and now I can say that I know a lot more than before. And what's better? I enjoyed it!
+
+Current preview can be seen at: [AzureWebsites - Resume of Dalibor](https://resumeofdalibor.azurewebsites.net/)
