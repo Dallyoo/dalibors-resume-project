@@ -19,3 +19,10 @@ MSBuild automatically runs Webpack build tasks depending on configuration (Debug
 - When buidling for development (debug), use profile **Resume DEV**.
 
 This is because on production and development there are different paths to static files, depending on which profile is used, the application takes into account *ASPNETCORE_ENVIRONMENT* variable, and sets the paths to the files automatically (minified and hashed for production, and non minified/hashed for development).
+
+## Why did I create this?
+This page was created as a fun project of mine, trying to learn something more about web development, and get better with my coding skills. I decided to use ASP.NET Core Razor Pages (because I have some experience with C# and .NET in general) with combination of Blazor components. Of course I had to use JavaScript, CSS, HTML and later I decided to also incorporate TypeScript (with some libraries like jQuery) about which I didn't know anything.
+
+I decided to start by using [Start Bootstrap](https://startbootstrap.com/theme/resume) ([Licensed under MIT](https://opensource.org/licenses/MIT)) as I did not have any previous experience on writing plain HTML, using CSS and of course with Bootstrap. I modified it for my needs, with some cool tweaks and features like ASP.NET localization, Blazor components for some of the page feautures and such.
+
+When I initially started, I did not have much experience with web development, so this project took longer than I expected. Anyways it was a great journey (that doesn't end), and now I can say that I know a lot more than before. And what's better? I enjoyed it!
