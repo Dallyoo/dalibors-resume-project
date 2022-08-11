@@ -1,0 +1,97 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "dotnet-build-debug",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/Resume/Resume.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "dotnet-build-release",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/Resume/Resume.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary",
+                "-c",
+                "Release"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": {
+                "kind": "build"
+            }
+        },
+        {
+            "label": "dotnet-publish-release",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                "${workspaceFolder}/Resume/Resume.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary",
+                "-c",
+                "Release"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": {
+                "kind": "build"
+            }
+        },
+        {
+            "label": "dotnet-watch",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "watch",
+                "run",
+                "--project",
+                "${workspaceFolder}/Resume/Resume.csproj"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": {
+                "kind": "build"
+            }
+        },
+        {
+            "type": "npm",
+            "script": "watch-dev",
+            "path": "Resume",
+            "group": "build",
+            "problemMatcher": [],
+            "label": "npm: watch-dev - Resume",
+            "detail": "cross-env NODE_ENV=development webpack --watch"
+        },
+        {
+            "type": "npm",
+            "script": "build-prod",
+            "path": "Resume",
+            "group": "build",
+            "problemMatcher": [],
+            "label": "npm: build-prod - Resume",
+            "detail": "cross-env NODE_ENV=production webpack"
+        },
+        {
+            "type": "npm",
+            "script": "build-dev",
+            "path": "Resume",
+            "group": "build",
+            "problemMatcher": [],
+            "label": "npm: build-dev - Resume",
+            "detail": "cross-env NODE_ENV=development webpack"
+        }
+    ]
+}
