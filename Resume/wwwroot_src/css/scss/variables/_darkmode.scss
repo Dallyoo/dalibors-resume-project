@@ -36,16 +36,20 @@ $prefix: "bs-";
 
 html {
     --body-bg: var(--bs-body-bg);
+    --main-wrapper-bg: #{$main-wrapper-color};
     --body-color: #{$gray-800};
     --heading-color: #{$gray-heading};
     --switcher-color: var(--bs-body-bg);
     --switcher-ball-color: var(--bs-dark);
     --display-mode-inline-light: inline-block;
     --display-mode-inline-dark: none;
+    --main-wrapper-box-shadow: #{$main-wrapper-box-shadow};
 }
 
 html[data-bs-color-scheme='dark'] {
     --body-bg: var(--bs-dark);
+    --main-wrapper-bg: #{$main-wrapper-color-dark};
+    --main-wrapper-box-shadow: #{$main-wrapper-box-shadow-light};
     --body-color: #{$gray-400};
     --heading-color: #{$gray-400};
     --switcher-color: var(--bs-dark);

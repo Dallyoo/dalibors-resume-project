@@ -4,7 +4,7 @@
 @model Resume.Models.CulturePickerModel
 
 <div class="@(Model.RenderAsButton ? "" : "nav-item") dropdown-center">
-	<a class="@(Model.RenderAsButton ? "btn" : "nav-link") dropdown-toggle dropdown-center" id="cultureSwitcherMenu" role="button" href="" data-bs-toggle="dropdown" aria-expanded="false">
+	<a class="@(Model.RenderAsButton ? "btn btn-primary" : "nav-link") dropdown-toggle dropdown-center" id="cultureSwitcherMenu" role="button" href="" data-bs-toggle="dropdown" aria-expanded="false">
 		<span tabindex="-1"><i class="fa fa-globe" aria-hidden="true"></i></span>
 		@SharedLocalizer["Nav_Language"]
 	</a>

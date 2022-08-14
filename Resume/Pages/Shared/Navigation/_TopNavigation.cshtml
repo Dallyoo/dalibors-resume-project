@@ -1,0 +1,15 @@
+﻿@using Resume.ViewComponents
+@inject IStringLocalizer<SharedResources> Localizer
+
+<!-- Top navigation -->
+<div class="d-flex justify-content-end">
+    <div class="p-2">
+        <!-- Culture navbar picker -->
+        <vc:culture-picker render-as-button=true />
+    </div>
+    <div class="p-2">
+        <!-- Dark mode switcher for navbar-->
+        <vc:dark-mode-switch drop-variation="@DarkModeSwitch.DropVariation.dropdown"
+                             button-size="@DarkModeSwitch.ButtonSize.defaultSize" />
+    </div>
+</div>

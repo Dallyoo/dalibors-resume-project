@@ -1,6 +1,7 @@
 // 
 // Global
 //
+
 body {
     color: var(--body-color);
 }
@@ -15,11 +16,6 @@ body {
     .resume-shrink {
         padding-left: $shrink-width;
     }
-}
-
-.page {
-    opacity: 0;
-    transition: 0.4s;
 }
 
 h1,
@@ -63,4 +59,29 @@ p.lead {
 
 .d-dark-inline {
     display: var(--display-mode-inline-dark) !important;
+}
+
+.page-wrapper {
+    opacity: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.main-wrapper {
+    background: var(--main-wrapper-bg);
+
+    @include media-breakpoint-down(lg) {
+        padding: 15px;
+    }
+
+    @include media-breakpoint-up(lg) {
+        padding: 40px;
+        @include box-shadow(var(--main-wrapper-box-shadow));
+        @include border-radius(8px);
+    }
+
+    .section {
+        margin-bottom: 60px;
+    }
 }

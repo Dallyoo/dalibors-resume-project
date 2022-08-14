@@ -5,66 +5,63 @@
 @inject IViewLocalizer Localizer
 @inject IStringLocalizer<SharedResources> SharedLocalizer
 @{
-	ViewData["Title"] = $"{SharedLocalizer["S_Resume"]} - {Localizer["PageTitle"].Value}";
+    ViewData["Title"] = $"{SharedLocalizer["S_Resume"]} - {Localizer["PageTitle"].Value}";
+    ViewData["RenderSideNav"] = false;
 }
-<!-- About page -->
-<section class="about-page-section" id="aboutPage">
-	<div class="about-page-section-content">
-		<div class="d-flex flex-row mb-5">
-			<!-- Back button -->
-			<div class="p-2">
-				<a class="btn" asp-page="/Index"><i class="fa fa-arrow-left me-2"></i>@SharedLocalizer["BackButton"]</a>
-			</div>
-			<div class="p-2" style="list-style: none"> 
-				<!-- Culture navbar picker -->
-				<vc:culture-picker render-as-button=true/>
-			</div>
-			<div class="p-2" style="list-style: none">
-				<!-- Darkmode switcher -->
-				<vc:dark-mode-switch drop-variation="@DarkModeSwitch.DropVariation.dropdown" button-size="@DarkModeSwitch.ButtonSize.defaultSize"/>
-			</div>
-		</div>
-		<div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-			<div class="flex-grow-1">
-				<h1 class="mb-0">
-					@SharedLocalizer["NamePossesive"]
-					<span class="text-primary">
-						@SharedLocalizer["S_Resume"]
-					</span>
-				</h1>
-				<div class="subheading mb-5 ">
-					@Localizer["CreatedBy"] <a href="mailto:hon.dalibor@gmail.com">hon.dalibor@gmail.com</a>
-				</div>
-			</div>
-		</div>
-		<p class="lead mb-5">
-			@Localizer["AboutThisProject"]
-		</p>
-		<p class="lead mb-5">
-			@Localizer["ToolsUsed"]
-		</p>
+<div class="d-flex flex-column">
+    <div class="main-wrapper">
+        <!-- About page -->
+        <section class="about-page-section" id="aboutPage">
+            <div class="about-page-section-content">
+                <div class="d-flex flex-row mb-5">
+                    <!-- Back button -->
+                    <div class="p-2">
+                        <a class="btn" asp-page="/Index"><i class="fa fa-arrow-left me-2"></i>@SharedLocalizer["BackButton"]</a>
+                    </div>
+                </div>
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                        <h1 class="mb-0">
+                            @SharedLocalizer["NamePossesive"]
+                            <span class="text-primary">
+                                @SharedLocalizer["S_Resume"]
+                            </span>
+                        </h1>
+                        <div class="subheading mb-5 ">
+                            @Localizer["CreatedBy"] <a href="mailto:hon.dalibor@gmail.com">hon.dalibor@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+                <p class="lead mb-5">
+                    @Localizer["AboutThisProject"]
+                </p>
+                <p class="lead mb-5">
+                    @Localizer["ToolsUsed"]
+                </p>
 
-		<p class="lead mb-5">
-			@Localizer["SourceCode"]
-		</p>
-		<div class="subheading mb-3">@Localizer["ProgrammingLangAndTools"]</div>
-		<ul class="list-inline dev-icons">
-			<li class="list-inline-item"><i class="fab fa-html5"></i></li>
-			<li class="list-inline-item"><i class="fab fa-css3-alt"></i></li>
-			<li class="list-inline-item"><i class="fab fa-js-square"></i></li>
-			<li class="list-inline-item"><i class="fab fa-node-js"></i></li>
-			<li class="list-inline-item"><i class="fab fa-sass"></i></li>
-			<li class="list-inline-item"><i class="fab fa-npm"></i></li>
-			<li class="list-inline-item"><i class="devicon-webpack-plain"></i></li>
-			<li class="list-inline-item"><i class="devicon-csharp-line"></i></li>
-			<li class="list-inline-item"><i class="devicon-dotnetcore-plain"></i></li>
-			<li class="list-inline-item"><i class="devicon-bootstrap-plain"></i></li>
-			<li class="list-inline-item"><i class="devicon-jquery-plain"></i></li>
-			<li class="list-inline-item"><i class="devicon-photoshop-plain"></i></li>
-			<li class="list-inline-item"><i class="devicon-azure-plain"></i></li>
-			<li class="list-inline-item"><i class="devicon-visualstudio-plain"></i></li>
-			<li class="list-inline-item"><i class="devicon-vscode-plain"></i></li>
+                <p class="lead mb-5">
+                    @Localizer["SourceCode"]
+                </p>
+                <div class="subheading mb-3">@Localizer["ProgrammingLangAndTools"]</div>
+                <ul class="list-inline dev-icons">
+                    <li class="list-inline-item"><i class="fab fa-html5"></i></li>
+                    <li class="list-inline-item"><i class="fab fa-css3-alt"></i></li>
+                    <li class="list-inline-item"><i class="fab fa-js-square"></i></li>
+                    <li class="list-inline-item"><i class="fab fa-node-js"></i></li>
+                    <li class="list-inline-item"><i class="fab fa-sass"></i></li>
+                    <li class="list-inline-item"><i class="fab fa-npm"></i></li>
+                    <li class="list-inline-item"><i class="devicon-webpack-plain"></i></li>
+                    <li class="list-inline-item"><i class="devicon-csharp-line"></i></li>
+                    <li class="list-inline-item"><i class="devicon-dotnetcore-plain"></i></li>
+                    <li class="list-inline-item"><i class="devicon-bootstrap-plain"></i></li>
+                    <li class="list-inline-item"><i class="devicon-jquery-plain"></i></li>
+                    <li class="list-inline-item"><i class="devicon-photoshop-plain"></i></li>
+                    <li class="list-inline-item"><i class="devicon-azure-plain"></i></li>
+                    <li class="list-inline-item"><i class="devicon-visualstudio-plain"></i></li>
+                    <li class="list-inline-item"><i class="devicon-vscode-plain"></i></li>
 
-		</ul>
-	</div>
-</section>
+                </ul>
+            </div>
+        </section>
+    </div>
+</div>

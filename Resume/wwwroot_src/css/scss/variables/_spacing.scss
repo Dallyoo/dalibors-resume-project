@@ -4,9 +4,13 @@
 
 // Spacing variable to set the sidebar base width
 $sidebar-base-width: 17rem;
+$sidebar-lg-base-width: 14rem;
 
 // Spacing variable for shrinkage
 $shrink-width: 11rem;
 
 // Spacing variable to add padding to the top of the body element that matches the height of the navbar
 $navbar-base-height: 3.375rem;
+
+// Side navigation bar and main wrapper radius
+$navbar-radius: 15px;

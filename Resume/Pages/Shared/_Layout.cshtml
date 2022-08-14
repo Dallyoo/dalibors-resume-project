@@ -1,4 +1,18 @@
 ﻿@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment HostingEnv
+@{
+	bool renderSideNav = true;
+	if ((bool?)ViewData["RenderSideNav"] == false)
+	{
+		renderSideNav = false;
+	}
+
+	bool renderTopNav = true;
+	if ((bool?)ViewData["RenderTopNav"] == false)
+	{
+		renderTopNav = false;
+	}
+
+}
 
 <!DOCTYPE html>
 <html lang="en" data-bs-color-scheme>
@@ -6,8 +20,8 @@
 	<!-- <base href="/"> -->
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-	<meta name="description" content="" />
-	<meta name="author" content="" />
+	<meta name="description" content="Dalibor Hon's resume website" />
+	<meta name="author" content="Dalibor Hon" />
 	<title>@ViewData["Title"]</title>
 	<link rel="icon" type="image/x-icon" href="~/assets/favicon.ico" />
 	<!-- Google fonts -->
@@ -39,7 +53,7 @@
 	</script>
 
 </head>
-<body id="page-top">
+<body>
 	<!-- Hosting environment "variable" store for JavaScript -->
 	<input id="hostingEnv" type="hidden" value=@HostingEnv.EnvironmentName />
 
@@ -49,11 +63,31 @@
 	<!-- Blazor reconnection popup-->
 	<partial name="~/Pages/Shared/Partial/_BlazorModal.cshtml" />
 
-	<div class="page" id="page">
-		<!-- Page render -->
-		<main role="main">
-			@RenderBody()
-		</main>
+	<div class="page-wrapper d-flex flex-row mt-lg-4 mb-lg-5" id="page">
+		@{
+			if (renderSideNav) // Side navigation bar
+			{
+				<partial name="~/Pages/Shared/Navigation/_SideNavigation.cshtml" />
+			}
+		}
+
+		<div class="d-flex flex-column">
+			<div class="main-wrapper">
+				@{
+					if (renderSideNav) // Side navigation bar burger
+					{
+						<partial name="~/Pages/Shared/Navigation/_SideNavigationBurger.cshtml" />
+					}
+
+					if (renderTopNav) // Top navigation bar
+					{
+						<partial name="~/Pages/Shared/Navigation/_TopNavigation.cshtml" />
+					}
+				}
+				<!-- Page render -->
+				@RenderBody()
+			</div>
+		</div>
 	</div>
 
 	
