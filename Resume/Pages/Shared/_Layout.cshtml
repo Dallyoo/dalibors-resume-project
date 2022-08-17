@@ -63,15 +63,16 @@
 	<!-- Blazor reconnection popup-->
 	<partial name="~/Pages/Shared/Partial/_BlazorModal.cshtml" />
 
-	<div class="page-wrapper d-flex flex-row mt-lg-4 mb-lg-5" id="page">
-		@{
-			if (renderSideNav) // Side navigation bar
-			{
-				<partial name="~/Pages/Shared/Navigation/_SideNavigation.cshtml" />
-			}
-		}
-
-		<div class="d-flex flex-column">
+	<div class="page-wrapper" id="page">
+		<div class="flex-container-row">
+			<div class="sidebar-wrapper flex-container-column">
+				@{
+					if (renderSideNav) // Side navigation bar
+					{
+						<partial name="~/Pages/Shared/Navigation/_SideNavigation.cshtml" />
+					}
+				}
+			</div>
 			<div class="main-wrapper">
 				@{
 					if (renderSideNav) // Side navigation bar burger

@@ -1,9 +1,9 @@
 ﻿@inject IStringLocalizer<SharedResources> SharedLocalizer
 
 <!-- Page loading spinner -->
-<div class="position-absolute top-50 start-50 translate-middle flex-column justify-content-center align-items-center" id="pageLoading">
+<div class="page-loading flex-container-column" id="pageLoading">
 	<div class="spinner spinner-border"></div>
-	<div class="mt-2">
+	<span>
 		<strong>@SharedLocalizer["loadingPage"]</strong>
-	</div>
+	</span>
 </div>

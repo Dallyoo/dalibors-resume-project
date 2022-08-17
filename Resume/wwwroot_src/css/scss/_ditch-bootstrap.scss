@@ -1,0 +1,547 @@
+/************ VARIABLES ****************/
+
+//
+// Colors and theming
+//
+
+// Color palette
+$primary: #bd5d38;
+$light: #EEEEEE;
+$secondary-light: #DDDDDD;
+$dark: #222831;
+$secondary-dark: #393E46;
+$gray: #343a40;
+
+// Other variables
+$main-wrapper-box-shadow: 0px 0px 6px rgba(0,0,0,20%);
+$main-wrapper-box-shadow-light: 0px 0px 6px rgba(255,255,255,20%);
+
+//
+// Spacing
+//
+
+// Spacing variable to set the sidebar base width
+$sidebar-base-width: 17rem;
+$sidebar-lg-base-width: 14rem;
+
+// Spacing variable for shrinkage
+$shrink-width: 11rem;
+
+// Spacing variable to add padding to the top of the body element that matches the height of the navbar
+$navbar-base-height: 3.375rem;
+
+// Side navigation bar and main wrapper radius
+$navbar-radius: 15px;
+
+$wrapper-top-offset: 1.5em;
+$wrapper-bottom-offset: 2.5em;
+
+//
+// Typography
+//
+
+// Override Bootstrap typography variables
+$font-family-base: "Muli", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$headings-font-family: "Saira Extra Condensed", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+$headings-font-weight: 700;
+$h1-font-size: 6rem;
+$h2-font-size: 3.5rem;
+$h3-font-size: 2rem;
+
+// Font awesome fonts
+$fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
+
+/************ DARKMODE ****************/
+
+
+/************ STYLES ****************/
+
+//
+// Global
+//
+
+body {
+    color: $light;
+    font-family: $font-family-base;
+    margin: 0;
+}
+
+@include media-breakpoint-up(lg) {
+    .resume-page {
+        padding-top: 0;
+        padding-left: $sidebar-base-width;
+        transition: 0.4s;
+    }
+
+    .resume-shrink {
+        padding-left: $shrink-width;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-transform: uppercase;
+    color: $gray;
+    font-family: $headings-font-family;
+}
+
+h2 {
+    font-size: $h2-font-size;
+}
+
+h3 {
+    font-size: $h3-font-size;
+}
+
+
+h1 {
+    line-height: 1;
+    font-family: $headings-font-family;
+    font-size: $h1-font-size;
+}
+
+p.lead {
+    font-size: 1.15rem;
+    font-weight: 400;
+}
+
+.subheading {
+    font-family: $headings-font-family;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+.spinner {
+    color: $primary;
+}
+
+#pageLoading {
+    display: flex;
+}
+
+.d-light-inline {
+    display: var(--display-mode-inline-light) !important;
+}
+
+.d-dark-inline {
+    display: var(--display-mode-inline-dark) !important;
+}
+
+.d-lg-block {
+    @include media-breakpoint-up(lg) {
+        display: block !important;
+    }
+}
+
+.d-lg-none {
+    @include media-breakpoint-up(lg) {
+        display: none !important;
+    }
+}
+
+.d-none {
+    display: none;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #cccccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+.list-inline{
+    padding-left: 0;
+    list-style: none;
+    
+    .list-inline-item{
+        display: inline-block;
+    }
+}
+
+.page-wrapper {
+    opacity: 0; // Gets animated on paghe load
+    color: black;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+
+    @include media-breakpoint-up(lg) {
+        top: $wrapper-top-offset;
+        margin-bottom: calc($wrapper-top-offset*2);
+    }
+}
+
+.flex-container-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-container-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-wrapper {
+    background: $secondary-light;
+
+    @include media-breakpoint-down(lg) {
+        padding: 15px;
+    }
+
+    @include media-breakpoint-up(lg) {
+        padding: 30px;
+        @include box-shadow($main-wrapper-box-shadow);
+        @include border-radius(8px);
+    }
+}
+
+.img-profile {
+    max-width: 6rem;
+    max-height: 10rem;
+    border: 0.5rem solid fade-out($light, 0.8);
+    border-radius: 50%;
+
+    @include media-breakpoint-down(lg) {
+        max-width: 10rem;
+        max-height: 10rem;
+        border: 0.5rem solid fade-out($gray, 0.8);
+    }
+}
+
+.text-primary,
+.color-primary {
+    color: $primary;
+}
+
+.bg-primary{
+    background-color: $primary;
+}
+
+//
+// Sections
+//
+
+// Resume section
+section {
+    &.resume-section {
+        display: flex;
+        align-items: center;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+        max-width: 75rem;
+
+        @include media-breakpoint-up(lg) {
+            min-height: 100vh;
+            padding-left: 3rem;
+            padding-right: 3rem;
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+
+        &.about-section {
+            justify-content: flex-start;
+
+            @include media-breakpoint-up(lg) {
+                min-height: 75vh;
+            }
+        }
+
+        .resume-section-content {
+            width: 100%;
+
+            .section-content {
+                display: flex;
+                flex-direction: row;
+
+                @include media-breakpoint-down(lg) {
+                    flex-direction: column;
+                }
+
+                justify-content: space-between;
+                margin-bottom: 5px;
+
+                .flex-grow {
+                    flex-grow: 1;
+                }
+
+                .flex-shrink {
+                    flex-shrink: 0;
+                }
+            }
+        }
+
+        h2 {
+            margin-bottom: 5px;
+        }
+
+        h3 {
+            margin-bottom: 0px;
+        }
+
+        ul {
+            margin-top: 0.5em;
+        }
+
+        .hideme {
+            opacity: 0;
+        }
+    }
+}
+
+// About page sections
+section {
+    &.about-page-section {
+        display: flex;
+        padding-left: 1rem;
+        padding-right: 1rem;
+
+        @include media-breakpoint-up(lg) {
+                padding-left: 3rem;
+                padding-right: 3rem;
+        }
+
+        h1 {
+            margin-top: 0;
+            margin-bottom: 0.5em;
+        }
+
+        .subheading{
+            margin-bottom: 0.2em;
+        }
+
+        ul{
+            padding: 0;
+            margin: 1px;
+        }
+
+        .btn {
+            @extend .btn-primary;
+        }
+
+        .about-page-section-content {
+            width: 100%;
+        }
+    }
+}
+
+
+//
+// Icons
+//
+
+// Styling for the rounded social media links
+
+.floating-icons {
+    .floating-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 2.5rem;
+        width: 2.5rem;
+        background-color: $gray-700;
+        color: $white;
+        border-radius: 100%;
+        font-size: 1.2rem;
+        margin-right: 1.2rem;
+        border: none;
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &:hover {
+            background-color: $primary;
+        }
+    }
+
+    @include media-breakpoint-down(lg) {
+        &.scrolled-down {
+            transform: translateY(125%);
+            transition: all 0.3s ease-in-out;
+        }
+
+        &.scrolled-up {
+            transform: translateY(0);
+            transition: all 0.3s ease-in-out;
+        }
+    }
+
+    a {
+        text-decoration: none;
+
+        &:visited {
+            text-decoration: none;
+        }
+    }
+}
+
+// Styling for the development technology icons
+.dev-icons {
+    font-size: 3rem;
+}
+
+//
+// Sidenav
+//
+
+.burger-button {
+    font-size: 1.2em;
+    z-index: 9999;
+    opacity: 100%;
+
+    i {
+        line-height: unset;
+    }
+}
+
+.sidebar-wrapper {
+    background-color: $primary;
+    transition: 0.4s;
+
+    @include media-breakpoint-up(lg) {
+        margin-right: 15px;
+        position: sticky;
+        top: $wrapper-top-offset;
+        height: max-content;
+        @include border-radius($navbar-radius);
+        @include box-shadow($main-wrapper-box-shadow);
+    }
+
+    @include media-breakpoint-down(lg) {
+        @include border-radius(0px);
+        height: 100vh;
+        position: fixed;
+        z-index: 2;
+        margin-right: 0px;
+        justify-content: center;
+    }
+}
+
+.side-navigation {
+    width: $sidebar-base-width;
+    transition: width 0.4s;
+    overflow: hidden;
+    text-align: center;
+    align-items: center;
+
+    @include media-breakpoint-down(lg) {
+        width: 0px;
+
+        &.sidebar-hide {
+            @include media-breakpoint-down(lg) {
+                width: $sidebar-lg-base-width;
+            }
+        }
+    }
+
+    .navbar {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+    }
+
+    .btn-close {
+        //btn-close position-absolute top-0 end-0 p-2 d-lg-none
+        position: absolute;
+        top: 0;
+        right: 0;
+        @extend .nav-link;
+        padding: 1.2em !important;
+
+        .fa{
+            font-size: 1.5em;
+        }
+    }
+
+    .navbar-brand {
+        display: flex;
+        flex-direction: column;
+        margin: auto auto 0;
+        padding: 0.5rem;
+        font-size: 1.25rem;
+        color: rgba(255, 255, 255, 1);
+        text-decoration: none;
+        white-space: nowrap;
+
+        .img-profile {
+            max-width: 6rem;
+            max-height: 10rem;
+            border: 0.5rem solid fade-out($white, 0.8);
+        }
+    }
+
+    .navbar-nav .nav-item .nav-link {
+        font-weight: 800;
+        letter-spacing: 0.05rem;
+        text-transform: uppercase;
+    }
+
+    .nav-link {
+        display: block;
+        padding: 0.5rem 0;
+        color: rgba(255, 255, 255, 0.55);
+        text-decoration: none;
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+
+        &:hover {
+            color: rgba(255, 255, 255, 1);
+        }
+    }
+}
+
+//
+// Top navigation
+//
+.top-navigation {
+    background: $secondary-light;
+    display: flex;
+    justify-content: end;
+    padding: 2px;
+
+    .btn{
+        margin-left: 2px;
+    }
+}
+
+.dropdown-item{
+    width: unset;
+}
+
+.burger-menu{
+    display: flex;
+    position: fixed;
+    padding: 2px;
+}
+
+// Page load spinner
+//position-absolute top-50 start-50 translate-middle flex-column justify-content-center align-items-center
+
+.page-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    align-items: center;
+    transform: translate(-50%, -50%);
+
+    span {
+        padding: 2px;
+        color: $secondary-dark;
+    }
+}
