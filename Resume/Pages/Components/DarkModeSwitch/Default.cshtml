@@ -1,19 +1,16 @@
-﻿@model Resume.Models.DarkModeSwitchModel
+﻿@model Resume.ViewComponents.DarkModeSwitch
 @inject IViewLocalizer Localizer
 
 <!-- Bootstrap switch for darkmode -->
-<div class="btn-group" role="button" id="darkmodeSwitch">
-	<button id="darkmode-button" class="btn @Model.ButtionSize">
+<div class="dropdown" id="darkmodeSwitch" data-dropdown-target="#darkmodeSwitchContent">
+	<button id="darkmode-button" class="button dropdown-button">
 		<i class="fas fa-moon fa-fw d-none d-light-inline" title="@Localizer["SwitchToDarkMode"]"></i>
 		<i class="fas fa-sun fa-fw d-none d-dark-inline" title="@Localizer["SwitchToLightMode"]"></i>
 	</button>
-	<div class="btn-group @Model.DropVariation.ToString()" role="group">
-		<button id="btnGroupDrop1" type="button" class="btn @Model.ButtionSize dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"></button>
-		<ul class="dropdown-menu animate slideIn" aria-labelledby="btnGroupDrop1">
-			<li><a id="darkmode-button-l-1" class="dropdown-item" tabindex=0>@Localizer["SetLightMode"]</a></li>
-			<li><a id="darkmode-button-d-1" class="dropdown-item" tabindex=0>@Localizer["SetDarkMode"]</a></li>
-			<li><hr class="dropdown-divider"></li>
-			<li><a id="darkmode-forget" class="dropdown-item" tabindex=0>@Localizer["ResetMode"]</a></li>
+		<ul class="dropdown-content @Model.DropVariationCss" id="darkmodeSwitchContent" aria-labelledby="darkmodeSwitchContent">
+			<li><a id="darkmode-button-l-1" tabindex=0>@Localizer["SetLightMode"]</a></li>
+			<li><a id="darkmode-button-d-1" tabindex=0>@Localizer["SetDarkMode"]</a></li>
+			<li><hr></li>
+			<li><a id="darkmode-forget" tabindex=0>@Localizer["ResetMode"]</a></li>
 		</ul>
-	</div>
 </div>

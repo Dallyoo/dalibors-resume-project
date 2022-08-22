@@ -3,6 +3,8 @@ using Resume.Middlewares;
 using Resume.Extensions;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation;
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddHttpContextAccessor();
@@ -58,6 +60,18 @@ builder.Services.AddServerSideBlazor(options =>
 #if DEBUG
 if (builder.Environment.IsDevelopment())
 {
+    
+    builder.Services.Configure<MvcRazorRuntimeCompilationOptions>(options =>
+    {
+        var blazorComponentLibrary = Path.GetFullPath(
+            Path.Combine(builder.Environment.ContentRootPath, "..", "BlazorComponentLibrary"));
+
+        var StaticFilesLibrary = Path.GetFullPath(
+            Path.Combine(builder.Environment.ContentRootPath, "..", "StaticFilesLibrary"));
+
+        options.FileProviders.Add(new PhysicalFileProvider(blazorComponentLibrary));
+        options.FileProviders.Add(new PhysicalFileProvider(StaticFilesLibrary));
+    });
     mvcBuilder.AddRazorRuntimeCompilation();
 }
 #endif

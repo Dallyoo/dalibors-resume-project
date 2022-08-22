@@ -41,12 +41,6 @@
     <Platforms>AnyCPU;x64;x86</Platforms>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Include="libman.json" />
-    <None Include="package-lock.json" />
-    <None Include="package.json" />
-  </ItemGroup>
-
   <ItemGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.7" />
   </ItemGroup>
@@ -65,13 +59,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BlazorComponentLibrary\BlazorComponentLibrary.csproj" />
+    <ProjectReference Include="..\StaticFilesLibrary\StaticFilesLibrary.csproj" />
   </ItemGroup>
 
-  <Target Name="WebpackBuild" BeforeTargets="BeforeBuild">
-    <Message Text="Building static files with webpack." Importance="high" />
-    <Message Text="Configuration: '$(Configuration)'" Importance="high" />
-    <Exec Condition="$(Configuration) == 'Debug'" Command="npm run build-dev" />
-    <Exec Condition="$(Configuration) == 'Release'" Command="npm run build-prod" />
-  </Target>
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
 
 </Project>

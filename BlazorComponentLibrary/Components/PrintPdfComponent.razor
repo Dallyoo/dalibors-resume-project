@@ -1,5 +1,4 @@
-﻿@using System.Web;
-@using iText;
+﻿@using iText;
 @using iText.IO;
 @using iText.IO.Font
 @using iText.IO.Font.Constants
@@ -14,122 +13,121 @@
 @using Razor.Templating.Core
 @inject IJSRuntime JS
 @inject NavigationManager NavManager
-@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment HostEnv
 @inject IStringLocalizer<PrintPdfComponent> Localizer
 
 <!-- Modal popup for PDF printing, uses Bootstrap CSS/JS -->
-<div class="modal fade" id="printModal" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="StaticBackdrop" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header" style="@(Spin ? "border-bottom: none;" : "")">
-				<h5 class="modal-title h-modal" id="exampleModalLabel">@Localizer["Modal_Title"]</h5>
-				<button type="button" class="btn-close @(Spin ? "d-none" : "")" data-bs-dismiss="modal" aria-label="@Localizer["Button_Close"]"></button>
-			</div>
-			<div class="modal-body d-flex align-items-center justify-content-center">
-				<div class="entry-content @(Spin ? "d-none" : "")">
-					<p class="p-modal">
-						@(ShowError ? ErrorMessage : Localizer["P_ConfirmDownload"])
-					</p>
-				</div>
-				<div class="d-flex justify-content-center spinner @(Spin ? "spinner-border" : "")"/>
-			</div>
-			<div class="modal-footer" style="@(Spin ? "border-top: none;" : "")">
-				<button type="button" class="btn btn-secondary @(Spin ? "d-none" : "")" data-bs-dismiss="modal">@Localizer["Button_Close"]</button>
-				<button @onclick="CreatePdfFromHtml" type="button" class="btn btn-primary @(Spin || ShowError ? "d-none" : "")">@Localizer["Button_DownloadPDF"]</button>
-			</div>
-		</div>
-	</div>
+<div class="modal" id="printModal" role="dialog" aria-labelledby="Print PDF modal window" aria-hidden="true">
+    <div class="modal-content">
+        <div class="modal-header" style="@(Spin ? "border-bottom: none;" : "")">
+            <div class="modal-header-content">
+                <h5 class="modal-title">@Localizer["Modal_Title"]</h5>
+            </div>
+            <button type="button" class="modal-close @(Spin ? "d-none" : "")" data-modal-close="#printModal" aria-label="@Localizer["Button_Close"]"><i class="fa fa-solid fa-circle-xmark"></i</button>
+        </div>
+        <div class="modal-body">
+            <div class="entry-content @(Spin ? "d-none" : "")">
+                <p class="p-modal">
+                    @(ShowError ? ErrorMessage : Localizer["P_ConfirmDownload"])
+                </p>
+            </div>
+            <div class="d-flex justify-content-center spinner @(Spin ? "spinner-border" : "")" />
+        </div>
+        <div class="modal-footer" style="@(Spin ? "border-top: none;" : "")">
+            <button type="button" class="button @(Spin ? "d-none" : "")" data-modal-close="#printModal">@Localizer["Button_Close"]</button>
+            <button @onclick="CreatePdfFromHtml" type="button" class="button @(Spin || ShowError ? "d-none" : "")">@Localizer["Button_DownloadPDF"]</button>
+        </div>
+    </div>
 </div>
 
 @code {
 
-	[Parameter]
-	public string? PageToPrint { get; set; }
+    [Parameter]
+    public string? PageToPrint { get; set; }
 
-	public bool Spin = false;
+    public bool Spin = false;
 
-	public string ErrorMessage { get; set; }
+    public string ErrorMessage { get; set; }
 
-	public bool ShowError { get; set; } = false;
+    public bool ShowError { get; set; } = false;
 
-	/// <summary>
-	/// Override default OnParametersSet method, and check if there is value in page to print parameter
-	/// </summary>
-	protected override void OnParametersSet()
-	{
-		if (PageToPrint is null || string.IsNullOrEmpty(PageToPrint))
-		{
-			ErrorMessage = Localizer["ErrorNoPageToPrint"];
-			ShowError = true;
-		}
-	}
+    /// <summary>
+    /// Override default OnParametersSet method, and check if there is value in page to print parameter
+    /// </summary>
+    protected override void OnParametersSet()
+    {
+        if (PageToPrint is null || string.IsNullOrEmpty(PageToPrint))
+        {
+            ErrorMessage = Localizer["ErrorNoPageToPrint"];
+            ShowError = true;
+        }
+    }
 
-	/// <summary>
-	/// Runs task that creates PDF from supplied CSHTML page using RazorTemplateEngine and updates the modal popup.
-	/// </summary>
-	private async Task CreatePdfFromHtml()
-	{
-		Spin = true;
-		var html = await RazorTemplateEngine.RenderAsync(PageToPrint);
-		await Task.Run(() => this.CreatePdf(html));
-		await Task.Run(() => JS.InvokeVoidAsync("closePrintModal"));
-		await Task.Delay(2000); // Delay so the modal doesn't switch in front of user
-		Spin = false;
-	}
-	/// <summary>
-	/// Creates PDF from supplied HTML, and passes it's MemoryStream to <see cref="DownloadFileFromStream">DownloadFileFromStream</see> method.
-	/// </summary>
-	/// <param name="html"></param>
-	/// <returns></returns>
-	private async Task CreatePdf(string html)
-	{
-		byte[] buffer;
-		// Itext implementation
-		iText.Kernel.Pdf.PdfDocument pdfDoc = null;
-		ConverterProperties props = new ConverterProperties();
-		PageSize pageSize = PageSize.A4;
+    /// <summary>
+    /// Runs task that creates PDF from supplied CSHTML page using RazorTemplateEngine and updates the modal popup.
+    /// </summary>
+    private async Task CreatePdfFromHtml()
+    {
+        Spin = true;
+        var html = await RazorTemplateEngine.RenderAsync(PageToPrint);
+        await Task.Run(() => this.CreatePdf(html));
+        await Task.Run(() => JS.InvokeVoidAsync("closePrintModal"));
+        await Task.Delay(2000); // Delay so the modal doesn't switch in front of user
+        Spin = false;
+    }
+    /// <summary>
+    /// Creates PDF from supplied HTML, and passes it's MemoryStream to <see cref="DownloadFileFromStream">DownloadFileFromStream</see> method.
+    /// </summary>
+    /// <param name="html"></param>
+    /// <returns></returns>
+    private async Task CreatePdf(string html)
+    {
+        byte[] buffer;
+        // Itext implementation
+        iText.Kernel.Pdf.PdfDocument pdfDoc = null;
+        ConverterProperties props = new ConverterProperties();
+        PageSize pageSize = PageSize.A4;
 
-		FontProvider fontProvider = new DefaultFontProvider(true, true, false);
-		props.SetFontProvider(fontProvider);
+        FontProvider fontProvider = new DefaultFontProvider(true, true, false);
+        props.SetFontProvider(fontProvider);
 
-		MediaDeviceDescription mediaDeviceDescription = new MediaDeviceDescription(MediaType.SCREEN);
-		mediaDeviceDescription.SetWidth(pageSize.GetWidth());
-		props.SetMediaDeviceDescription(mediaDeviceDescription);
+        MediaDeviceDescription mediaDeviceDescription = new MediaDeviceDescription(MediaType.SCREEN);
+        mediaDeviceDescription.SetWidth(pageSize.GetWidth());
+        props.SetMediaDeviceDescription(mediaDeviceDescription);
 
-		props.SetBaseUri(NavManager.BaseUri);
+        props.SetBaseUri(NavManager.BaseUri);
 
-		using (MemoryStream memStream = new MemoryStream())
-		{
-			using (PdfWriter pdfWriter = new PdfWriter(memStream))
-			{
-				pdfWriter.SetCloseStream(true);
-				using (pdfDoc = new iText.Kernel.Pdf.PdfDocument(pdfWriter))
-				{
-					pdfDoc.SetDefaultPageSize(pageSize);
-					pdfDoc.SetCloseWriter(true);
-					pdfDoc.SetCloseReader(true);
-					pdfDoc.SetFlushUnusedObjects(true);
-					HtmlConverter.ConvertToPdf(html, pdfDoc, props);
-					pdfDoc.Close();
-				}
-			}
-			buffer = memStream.ToArray();
-		}
+        using (MemoryStream memStream = new MemoryStream())
+        {
+            using (PdfWriter pdfWriter = new PdfWriter(memStream))
+            {
+                pdfWriter.SetCloseStream(true);
+                using (pdfDoc = new iText.Kernel.Pdf.PdfDocument(pdfWriter))
+                {
+                    pdfDoc.SetDefaultPageSize(pageSize);
+                    pdfDoc.SetCloseWriter(true);
+                    pdfDoc.SetCloseReader(true);
+                    pdfDoc.SetFlushUnusedObjects(true);
+                    HtmlConverter.ConvertToPdf(html, pdfDoc, props);
+                    pdfDoc.Close();
+                }
+            }
+            buffer = memStream.ToArray();
+        }
 
-		// Download the file
-		MemoryStream memoryStream = new MemoryStream(buffer);
-		await this.DownloadFileFromStream(memoryStream, "ResumeOfDalibor.pdf");
+        // Download the file
+        MemoryStream memoryStream = new MemoryStream(buffer);
+        await this.DownloadFileFromStream(memoryStream, "ResumeOfDalibor.pdf");
 
-	}
+    }
 
-	/// <summary>
-	/// Downloads a file from MemoryStream in a web browser
-	/// </summary>
-	/// <param name="fileStream">MemoryStream of file to download</param>
-	/// <param name="fileName">Filename of downloaded file</param>
-	private async Task DownloadFileFromStream(MemoryStream fileStream, string fileName)
-	{
-		using var streamRef = new DotNetStreamReference(stream: fileStream);
-		await JS.InvokeVoidAsync("downloadFileFromStream", fileName, streamRef);
-	}
+    /// <summary>
+    /// Downloads a file from MemoryStream in a web browser
+    /// </summary>
+    /// <param name="fileStream">MemoryStream of file to download</param>
+    /// <param name="fileName">Filename of downloaded file</param>
+    private async Task DownloadFileFromStream(MemoryStream fileStream, string fileName)
+    {
+        using var streamRef = new DotNetStreamReference(stream: fileStream);
+        await JS.InvokeVoidAsync("downloadFileFromStream", fileName, streamRef);
+    }
 }

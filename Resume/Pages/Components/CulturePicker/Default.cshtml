@@ -3,24 +3,24 @@
 @inject IStringLocalizer<SharedResources> SharedLocalizer
 @model Resume.Models.CulturePickerModel
 
-<div class="@(Model.RenderAsButton ? "" : "nav-item") dropdown-center">
-	<a class="@(Model.RenderAsButton ? "btn btn-primary" : "nav-link") dropdown-toggle dropdown-center" id="cultureSwitcherMenu" role="button" href="" data-bs-toggle="dropdown" aria-expanded="false">
-		<span tabindex="-1"><i class="fa fa-globe" aria-hidden="true"></i></span>
-		@SharedLocalizer["Nav_Language"]
-	</a>
-	<ul class="dropdown-menu animate slideIn" aria-labelledby="cultureSwitcherMenu">
-		@foreach (var culture in Model.SupportedCultures)
-		{
-			var nativeName = culture.NativeName;
-			var isoCountryCode = Model.IsoLanguageCodeToIsoCountryCode(culture.Name);
-			nativeName = char.ToUpper(nativeName.First()) + nativeName.Substring(1);
-			<li>
-				<a asp-route-culture="@culture.Name" class="dropdown-item">
-					<span class="fi fi-@isoCountryCode.ToLower() me-2" position-absolute" aria-hidden="true"></span>
-					<span>@nativeName</span>
-					<i class="@(Model.CurrentUICulture.Name == culture.Name ? "fa fa-check" : "")" aria-hidden="true"></i>
-				</a>
-			</li>
-		}
-	</ul>
+<div class="dropdown" id="languageDropdown" data-dropdown-target="#cultureSwitcherMenu">
+    <@(Model.RenderAsButton ? "button" : "a") class="@(Model.RenderAsButton ? "button dropdown-button" : "button-link dropdown-link")" role="button" tabindex="1">
+        <span tabindex="-1"><i class="fa fa-globe" aria-hidden="true"></i></span>
+        @SharedLocalizer["Nav_Language"]
+    </@(Model.RenderAsButton ? "button" : "a")>
+    <ul class="dropdown-content" id="cultureSwitcherMenu" aria-labelledby="cultureSwitcherMenu" aria-expanded="false">
+        @foreach (var culture in Model.SupportedCultures)
+        {
+            var nativeName = culture.NativeName;
+            var isoCountryCode = Model.IsoLanguageCodeToIsoCountryCode(culture.Name);
+            nativeName = char.ToUpper(nativeName.First()) + nativeName.Substring(1);
+            <li>
+                <a asp-route-culture="@culture.Name">
+                    <span class="fi fi-@isoCountryCode.ToLower()" aria-hidden="true"></span>
+                    <span>@nativeName</span>
+                    <i class="@(Model.CurrentUICulture.Name == culture.Name ? "fa fa-check" : "")" aria-hidden="true"></i>
+                </a>
+            </li>
+        }
+    </ul>
 </div>

@@ -13,9 +13,9 @@
 @import "bootstrap/scss/root";
 
 // Import bootstrap modules
-@import "bootstrap/scss/buttons";
-@import "bootstrap/scss/button-group";
-@import "bootstrap/scss/dropdown";
+//@import "bootstrap/scss/buttons";
+//@import "bootstrap/scss/button-group";
+//@import "bootstrap/scss/dropdown";
 @import "bootstrap/scss/modal";
 @import "bootstrap/scss/spinners";
 
@@ -40,7 +40,7 @@
 @import "./components/icons";
 @import "./components/dropdown";
 @import "./components/dark-mode-switch";
-@import "./components/blazor-modal";*/
+;*/
 
 // Page sections
 /*@import "./sections/resume-section";
@@ -51,6 +51,9 @@
 
 // Flag icons
 @import "flag-icons";
+
+// Blazor modal component
+@import "./components/blazor-modal";
 
 // Ditch bootstrap
 @import "ditch-bootstrap";

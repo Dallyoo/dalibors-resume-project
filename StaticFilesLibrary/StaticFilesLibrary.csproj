@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<StaticWebAssetBasePath Condition="$(StaticWebAssetBasePath) == ''">/</StaticWebAssetBasePath>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Content Remove="libman.json" />
+		<Content Remove="package-lock.json" />
+		<Content Remove="package.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="libman.json" />
+		<None Include="package-lock.json" />
+		<None Include="package.json" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<SupportedPlatform Include="browser" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.8" />
+	</ItemGroup>
+
+	<Target Name="WebpackBuild" BeforeTargets="BeforeBuild">
+		<Message Text="Building static files with webpack." Importance="high" />
+		<Message Text="Configuration: '$(Configuration)'" Importance="high" />
+		<Exec Condition="$(Configuration) == 'Debug'" Command="npm run build-dev" />
+		<Exec Condition="$(Configuration) == 'Release'" Command="npm run build-prod" />
+	</Target>
+
+</Project>

@@ -1,0 +1,24 @@
+﻿@model Resume.ViewComponents.Modal
+
+<div id="@Model.ModalID" class="modal" data-modal-backdrop="@(Model.AllowClickOutside? "" : "static")">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="modal-header-content">
+                <h5 class="modal-title">@Model.Title</h5>
+            </div>
+            @{
+                if (Model.CloseButton)
+                {
+                    <a type="button" class="modal-close" data-modal-close="#@Model.ModalID" aria-label="Close modal"><i class="fa fa-solid fa-circle-xmark"></i></a>
+                }
+            }
+        </div>
+        <div class="modal-body">
+            @Model.Body
+        </div>
+        <div class="modal-footer">
+            @Model.Footer
+        </div>
+    </div>
+</div>

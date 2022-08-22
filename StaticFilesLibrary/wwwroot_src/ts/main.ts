@@ -6,6 +6,8 @@
 // Import other components
 import "./website-animations"
 import "./blazor-modal";
+import "./dropdown-handler";
+import "./modal-handler";
 import { BlazorModalDebug } from "./blazor-modal";
 
 // Import styles
@@ -48,7 +50,7 @@ class Main {
         window.addEventListener("DOMContentLoaded", event => {
 
             //Constants
-            const sidebarCollapser = document.querySelector(".burger-button") as HTMLElement;
+            const sidebarBurger = document.querySelector(".hamburger") as HTMLElement;
             const sidebarCloser = document.querySelector("a[id=closeSideNav]") as HTMLElement;
             const sidebar = document.querySelector("div[id=sideNav]") as HTMLElement;
 
@@ -88,8 +90,8 @@ class Main {
             };
 
             // Assign onclick function to navbar collapser and closer
-            if (sidebarCollapser && sidebar) {
-                sidebarCollapser.onclick = function () {
+            if (sidebarBurger && sidebar) {
+                sidebarBurger.onclick = function () {
                     $(sidebar).toggleClass("sidebar-hide");
                 };
 
@@ -141,6 +143,7 @@ class Main {
                 });
             };
             // Activate Bootstrap scrollspy on the main nav element
+            /*
             const sideNav = document.body.querySelector('#sideNav');
             if (sideNav) {
                 new window["bootstrap"].ScrollSpy(document.body, {
@@ -148,6 +151,7 @@ class Main {
                     offset: 74,
                 });
             }
+            */
 
             // Collapse responsive navbar when clocked on link
             const responsiveNavItems = [].slice.call(

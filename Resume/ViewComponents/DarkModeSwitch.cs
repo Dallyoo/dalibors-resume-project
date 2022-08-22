@@ -9,52 +9,46 @@ namespace Resume.ViewComponents
     public class DarkModeSwitch : ViewComponent
     {
         /// <summary>
-        /// Bootstrap dropdown variations.
+        /// Dropdown menu variations.
         /// </summary>
         public enum DropVariation
         {
-            dropdown,
-            dropend,
-            dropup,
-            dropstart,
+            standard,
+            center
 
         }
+
         /// <summary>
-        /// Button sizes for dark mode switch
+        /// Dictionary which assigns class to <see cref="DropVariation"></see> enum.
         /// </summary>
-        public enum ButtonSize
+        private static Dictionary<DropVariation, string> DropVariations = new Dictionary<DropVariation, string>()  
         {
-            defaultSize,
-            large,
-            small,
-        }
-        /// <summary>
-        /// Dictionary which assigns class to <see cref="ButtonSize">ButtonSize</see> enum.
-        /// </summary>
-        private static Dictionary<ButtonSize, string> ButtonSizes = new Dictionary<ButtonSize, string>()  
-        {
-            { ButtonSize.defaultSize, string.Empty },
-            { ButtonSize.large, "btn-lg" },
-            { ButtonSize.small, "btn-sm" }
+            { DropVariation.standard, string.Empty },
+            { DropVariation.center, "dropdown-content-center" }
         };
-
+        /// <summary>
+        /// CSS which gets assiged to dropdown class.
+        /// </summary>
+        public string DropVariationCss { get; private set; }
+            = string.Empty;
+        /// <summary>
+        /// Dark mode switch component. Creates a button with options for dark mode switching.
+        /// </summary>
         public DarkModeSwitch()
         {
         }
         /// <summary>
-        /// Creates dark mode switch component with selected drop variation and button size. Uses <see cref="DarkModeSwitchModel">DarkSwitchModel</see> as it's model.
+        /// Creates dark mode switch component with selected drop variation and button size. Uses <see cref="DarkModeSwitch">DarkSwitchModel</see> as it's model.
         /// </summary>
-        /// <param name="dropVariation"><see cref="DropVariation">Bootstrap dropdown variation</see></param>
-        /// <param name="buttonSize"><see cref="ButtonSize">Bootstrap button size</see></param>
+        /// <param name="dropVariation"><see cref="DropVariation">Dropdown menu variations</see></param>
         /// <returns>View from <see cref="DarkModeSwitchModel">DarkSwitchModel</see></returns>
-        public IViewComponentResult Invoke(DropVariation dropVariation, ButtonSize buttonSize)
+        public IViewComponentResult Invoke(DropVariation dropVariation)
         {
-            var buttonSizeCss = ButtonSizes[buttonSize];
+            var dropVariationCss = DropVariations[dropVariation];
 
-            var model = new DarkModeSwitchModel
+            var model = new DarkModeSwitch
             {
-                DropVariation = dropVariation,
-                ButtionSize = buttonSizeCss
+                DropVariationCss = dropVariationCss,
             };
 
             return View(model);

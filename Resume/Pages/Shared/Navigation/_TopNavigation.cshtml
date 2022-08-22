@@ -1,15 +1,24 @@
-﻿@using Resume.ViewComponents
+﻿@using BlazorComponentLibrary.Components
+@using Resume.ViewComponents
 @inject IStringLocalizer<SharedResources> Localizer
 
 <!-- Top navigation -->
 <div class="flex-container-row top-navigation">
-    <div class="p-2">
+    <div>
         <!-- Culture navbar picker -->
         <vc:culture-picker render-as-button=true />
     </div>
-    <div class="p-2">
-        <!-- Dark mode switcher for navbar-->
-        <vc:dark-mode-switch drop-variation="@DarkModeSwitch.DropVariation.dropdown"
-                             button-size="@DarkModeSwitch.ButtonSize.defaultSize" />
+    <div>
+        <!-- Dark mode switcher for navbar -->
+        <vc:dark-mode-switch drop-variation="@DarkModeSwitch.DropVariation.standard"/>
     </div>
+
+    <button class="button" data-modal-target="#testModal">Test modal</button>
+
+    @(await Component.InvokeAsync(nameof(Modal), new Modal{
+        ModalID = "testModal",
+        //CloseButton = false,
+        AllowClickOutside = false
+    }))
+
 </div>

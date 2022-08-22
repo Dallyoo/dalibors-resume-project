@@ -23,7 +23,7 @@ namespace Resume.ViewComponents
         /// <summary>
         /// Gets the current browser request culture, and assigns it to <see cref="CulturePickerModel">CulturePickerModel</see>.
         /// </summary>
-        /// <param name="RenderAsButton">Specifies if the culture picker should be rendered as standalone button. Usage outside of navigation.</param>
+        /// <param name="RenderAsButton">Specifies if the culture picker should be rendered as standalone button or as a link. Usage outside of navigation.</param>
         /// <returns>View from <see cref="CulturePickerModel">CulturePickerModel</see>.</returns>
         public IViewComponentResult Invoke(bool RenderAsButton = true)
         {

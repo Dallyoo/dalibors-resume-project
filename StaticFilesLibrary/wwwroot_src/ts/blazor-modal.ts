@@ -1,11 +1,13 @@
 ﻿//
-// Custom Blazor reconnection modal, with usage of Bootstrap modal window
+// Custom Blazor reconnection modal
 //
+
+import { Modal } from "./modal-handler";
 
 class BlazorModal {
     static readonly HOSTING_ENV = (<HTMLInputElement>document.querySelector("#hostingEnv")).value; //.NET Core hosting environment
-    static readonly BLAZOR_MODAL = new window["bootstrap"].Modal(document.getElementById("components-reconnect-modal"));
-    static readonly MODAL_ELEMENT: HTMLElement | null = document.getElementById("components-reconnect-modal");
+    static readonly MODAL_ELEMENT = <HTMLElement>document.getElementById("components-reconnect-modal");
+    static readonly MODAL = new Modal(this.MODAL_ELEMENT);
 
     //document.getElementById("components-reconnect-modal");
 
@@ -62,18 +64,18 @@ class BlazorModal {
                 if (BlazorModal.HOSTING_ENV == "Production") {
                     if ($(mutation.target).hasClass("components-reconnect-failed")
                         || $(mutation.target).hasClass("components-reconnect-rejected")) {
-                        BlazorModal.BLAZOR_MODAL.show();
+                        BlazorModal.MODAL.show();
                     }
                 } else {
                     if ($(mutation.target).hasClass("components-reconnect-failed")
                         || $(mutation.target).hasClass("components-reconnect-show")
                         || $(mutation.target).hasClass("components-reconnect-rejected")) {
-                        BlazorModal.BLAZOR_MODAL.show();
+                        BlazorModal.MODAL.show();
                     }
                 }
 
                 if ($(mutation.target).hasClass("components-reconnect-hide")) {
-                    BlazorModal.BLAZOR_MODAL.hide();
+                    BlazorModal.MODAL.hide();
                 }
 
             }
@@ -85,12 +87,12 @@ class BlazorModal {
 class BlazorModalDebug {
     // For debug purposes
     public closeBlazorModal(): void {
-        BlazorModal.BLAZOR_MODAL.hide();
+        BlazorModal.MODAL.hide();
     };
 
     // For debug purposes
     public openBlazorModal(): void {
-        BlazorModal.BLAZOR_MODAL.show();
+        BlazorModal.MODAL.show();
     };
 
     // For debug purposes
