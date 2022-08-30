@@ -1,15 +1,20 @@
+# This repository is not in use anymore.
+Please see this [repository](https://github.com/dallyh/astro-nomical-resume) where I used a different framework, as this one was a little bit overkill for such a simple website.
+
+Also this branch was just a test of getting rid of bootstrap and using my own implementations of everything. This branch isn't fully functional.
+
 # Dalibor's Resume Project
 
 For propper function you need to have Node.JS with NPM installed.
 
-Clone this repository and run npm install under /Resume folder. This will install all the required NPM dependencies
+Clone this repository and run npm install under /StaticFilesLibrary folder. This will install all the required NPM dependencies
 
 After that there is a webpack configuration. This configuration can be run in multiple ways:
 - npm run build-dev
   - Development build of static assets. Assets are not minified.
 - npm run build-prod
   - Production build of static assets. Assets are minified and hashed.
-- npm run dev-watch
+- npm run watch-dev
   - Webpack watcher, that watches for changes on static source files (SCSS, TS...)
 
 Either of those creates static files under wwwroot directory.
@@ -26,5 +31,3 @@ This page was created as a fun project of mine, trying to learn something more a
 I decided to start by using [Start Bootstrap](https://startbootstrap.com/theme/resume) ([Licensed under MIT](https://opensource.org/licenses/MIT)) as I did not have any previous experience on writing plain HTML, using CSS and of course with Bootstrap. I modified it for my needs, with some cool tweaks and features like ASP.NET localization, Blazor components for some of the page feautures and such.
 
 When I initially started, I did not have much experience with web development, so this project took longer than I expected. Anyways it was a great journey (that doesn't end), and now I can say that I know a lot more than before. And what's better? I enjoyed it!
-
-Current preview can be seen at: [AzureWebsites - Resume of Dalibor](https://resumeofdalibor.azurewebsites.net/)
